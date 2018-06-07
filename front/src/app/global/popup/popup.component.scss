@@ -1,0 +1,26 @@
+@import "../../../assets/styles/variables";
+.popup-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: $transparent-black;
+  z-index: $z-index9;
+}
+
+.popup-container {
+  position: fixed;
+  display: flex;
+  top: $default-popup-top;
+  justify-content: center;
+  z-index: $z-index10;
+  width: 100%;
+
+  .popup-panel {
+    border-radius: $border-radius;
+    background: $white;
+    min-width: 400px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  }
+}
