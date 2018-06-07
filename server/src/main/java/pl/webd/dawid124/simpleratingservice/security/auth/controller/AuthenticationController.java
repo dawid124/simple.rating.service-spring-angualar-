@@ -23,6 +23,7 @@ import pl.webd.dawid124.simpleratingservice.security.common.TokenHelper;
 import pl.webd.dawid124.simpleratingservice.security.model.PasswordChanger;
 import pl.webd.dawid124.simpleratingservice.security.model.SecurityUser;
 import pl.webd.dawid124.simpleratingservice.security.service.impl.CustomUserDetailsService;
+import pl.webd.dawid124.simpleratingservice.users.model.UserModel;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -68,14 +69,14 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> registerNewUser(@RequestBody SecurityUser securityUser, HttpServletResponse response)
+    public ResponseEntity<?> registerNewUser(@RequestBody UserModel userModel, HttpServletResponse response)
             throws AuthenticationException, IOException {
 
-        if (!EmailValidator.getInstance().isValid(securityUser.getUsername())) {
+        if (!userModel.isValid()) {
             return new ResponseEntity<>("USERNAME_OR_EMAIL_NOT_VALID", HttpStatus.BAD_REQUEST);
         }
 
-        return userDetailsService.createAndReturnResponseEntity(securityUser);
+        return userDetailsService.createAndReturnResponseEntity(userModel);
     }
 
 

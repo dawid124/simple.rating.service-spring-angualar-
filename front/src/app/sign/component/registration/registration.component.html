@@ -1,0 +1,55 @@
+<form class="base-container" [formGroup]="registrationForm" (ngSubmit)="signup()">
+  <ngx-spinner class="inner"
+    size = "small"
+    color = "#fff"
+    type = "ball-fussion">
+  </ngx-spinner>
+
+  <mat-form-field>
+    <input matInput
+           formControlName="username"
+           placeholder="{{'SIGN.FORM_LABEL_LOGIN' | translate}}">
+  </mat-form-field>
+  <p class="validation-error" *ngIf="!username.valid && username.dirty">
+    {{'VALIDATION.REQUIRED' | translate}}
+  </p>
+
+  <mat-form-field>
+    <input matInput
+           formControlName="email"
+           placeholder="{{'SIGN.FORM_LABEL_EMAIL' | translate}}">
+  </mat-form-field>
+  <p class="validation-error" *ngIf="!email.valid && email.dirty">
+    {{'VALIDATION.EMAIL' | translate}}
+  </p>
+
+  <mat-form-field>
+    <input matInput
+           type="password"
+           formControlName="password"
+           placeholder="{{'SIGN.FORM_LABEL_PASSWORD' | translate}}">
+  </mat-form-field>
+  <p class="validation-error" *ngIf="!password.valid && password.dirty">
+    {{'VALIDATION.REQUIRED' | translate}}
+  </p>
+
+  <mat-form-field>
+    <input matInput
+           type="password"
+           formControlName="repassword"
+           placeholder="{{'SIGN.FORM_LABEL_PASSWORD' | translate}}">
+  </mat-form-field>
+  <p class="validation-error" *ngIf="!repassword.valid && repassword.dirty">
+    {{'VALIDATION.REQUIRED' | translate}}
+  </p>
+  <p class="validation-error" *ngIf="password.dirty && repassword.dirty && repassword.value !== password.value">
+    {{'VALIDATION.THE_SAME_PASSWORD' | translate}}
+  </p>
+
+  <div class="button-footer">
+    <button mat-raised-button color="primary" type="submit"
+            [disabled]="!registrationForm.valid || repassword.value !== password.value"
+           >{{'SIGN.FORM_LABEL_SIGN_UP' | translate}}
+    </button>
+  </div>
+</form>

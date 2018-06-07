@@ -1,5 +1,7 @@
 package pl.webd.dawid124.simpleratingservice.users.model;
 
+import org.apache.commons.validator.routines.EmailValidator;
+import org.springframework.util.StringUtils;
 import pl.webd.dawid124.simpleratingservice.security.model.Role;
 
 import java.io.Serializable;
@@ -73,5 +75,11 @@ public class UserModel implements Serializable {
 
     public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
+    }
+
+    public boolean isValid() {
+        return StringUtils.hasText(username)
+                && StringUtils.hasText(password)
+                && EmailValidator.getInstance().isValid(email);
     }
 }

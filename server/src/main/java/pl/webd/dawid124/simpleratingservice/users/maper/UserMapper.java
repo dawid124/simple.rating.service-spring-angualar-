@@ -10,7 +10,6 @@ import pl.webd.dawid124.simpleratingservice.users.model.UserModel;
 public interface UserMapper {
 
     @Insert("insert into users(username,email,password,role,enabled) values(#{username},#{email},#{password},#{role},#{enabled})")
-    @SelectKey(statement="call identity()", keyProperty="id", before=false, resultType=Integer.class)
     int insertUser(UserModel userModel);
 
     @Select("select * from users WHERE username=#{username}")

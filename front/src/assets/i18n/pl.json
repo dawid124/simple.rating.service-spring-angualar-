@@ -1,0 +1,17 @@
+{
+  "APP_NAME": "Oceniarka",
+  "SIGN": {
+    "LOGIN_LABEL": "Logowanie",
+    "REGISTRATION_LABEL": "Rejestracja",
+    "FORM_LABEL_LOGIN": "Nazwa użytkonika",
+    "FORM_LABEL_EMAIL": "E-mail",
+    "FORM_LABEL_PASSWORD": "Hasło",
+    "FORM_LABEL_SIGN_IN": "Zaloguj",
+    "FORM_LABEL_SIGN_UP": "Zarejestruj"
+  },
+  "VALIDATION": {
+    "REQUIRED": "To pole jest wymagane",
+    "EMAIL": "Email jest nie poprawny",
+    "THE_SAME_PASSWORD": "Hasła muszą byc takie same"
+  }
+}

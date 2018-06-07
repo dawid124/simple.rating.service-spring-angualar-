@@ -1,3 +1,44 @@
 body {
   background: $white;
 }
+
+.mat-tab-label {
+  width: 100%;
+}
+
+.base-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.button-footer {
+  width: 100%;
+  button {
+    float: right;
+  }
+}
+
+.mat-tab-body-wrapper {
+  transition: none;
+}
+
+.validation-error {
+  color: $red;
+  margin-bottom: 4px;
+  margin-top: -20px;
+  padding-left: 8px;
+  font-size: $small-font;
+  &:before {
+    content: '*';
+  }
+}
+
+ngx-spinner {
+  &.inner {
+    .black-overlay {
+      position: absolute;
+      background-color: rgba(51, 51, 51, 0.2) !important;
+    }
+  }
+}

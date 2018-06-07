@@ -41,14 +41,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
     }
 
-    public ResponseEntity<?> createAndReturnResponseEntity(SecurityUser securityUser) {
-        UserModel user = new UserModel();
+    public ResponseEntity<?> createAndReturnResponseEntity(UserModel user) {
 
-        user.setEmail(securityUser.getUsername());
-        user.setUsername(securityUser.getUsername());
-        user.setPassword(passwordEncoder.encode(securityUser.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(true);
-
         user.setRole(Role.ROLE_USER);
 
         try {
