@@ -1,0 +1,19 @@
+<mat-tab-group class="md-no-animation"
+               [@.disabled]="true"
+               (selectedIndexChange)="switchTab($event)"
+               [selectedIndex]="selectedTab">
+  <mat-tab label="{{'SIGN.LOGIN_LABEL' | translate}}">
+
+    <ng-template matTabContent>
+      <app-login (hidePopup)="hidePopup()"></app-login>
+    </ng-template>
+
+  </mat-tab>
+  <mat-tab label="{{'SIGN.REGISTRATION_LABEL' | translate}}">
+
+    <ng-template matTabContent>
+      <app-registration (switchTab)="switchTab($event)"></app-registration>
+    </ng-template>
+
+  </mat-tab>
+</mat-tab-group>

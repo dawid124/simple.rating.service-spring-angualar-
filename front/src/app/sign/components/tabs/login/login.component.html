@@ -1,0 +1,33 @@
+<form class="base-container" [formGroup]="loginForm" (ngSubmit)="signin()">
+  <ngx-spinner class="inner"
+               size = "small"
+               color = "#fff"
+               type = "ball-fussion">
+  </ngx-spinner>
+
+  <mat-form-field>
+    <input matInput
+           formControlName="username"
+           placeholder="{{'SIGN.FORM_LABEL_LOGIN' | translate}}">
+  </mat-form-field>
+  <p class="validation-error" *ngIf="!username.valid && username.dirty">
+    {{'VALIDATION.REQUIRED' | translate}}
+  </p>
+
+  <mat-form-field>
+    <input matInput
+           type="password"
+           formControlName="password"
+           placeholder="{{'SIGN.FORM_LABEL_PASSWORD' | translate}}">
+  </mat-form-field>
+  <p class="validation-error" *ngIf="!password.valid && password.dirty">
+    {{'VALIDATION.REQUIRED' | translate}}
+  </p>
+
+  <div class="button-footer">
+    <button  mat-raised-button color="primary" type="submit"
+             [disabled]="!loginForm.valid">
+      {{'SIGN.FORM_LABEL_SIGN_IN' | translate}}
+    </button>
+  </div>
+</form>

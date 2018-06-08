@@ -22,6 +22,7 @@ import pl.webd.dawid124.simpleratingservice.security.auth.http.JwtAuthentication
 import pl.webd.dawid124.simpleratingservice.security.common.TokenHelper;
 import pl.webd.dawid124.simpleratingservice.security.model.PasswordChanger;
 import pl.webd.dawid124.simpleratingservice.security.model.SecurityUser;
+import pl.webd.dawid124.simpleratingservice.security.model.UserData;
 import pl.webd.dawid124.simpleratingservice.security.service.impl.CustomUserDetailsService;
 import pl.webd.dawid124.simpleratingservice.users.model.UserModel;
 
@@ -48,15 +49,11 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(
-            @RequestBody JwtAuthenticationRequest authenticationRequest,
-            HttpServletResponse response) throws AuthenticationException, IOException {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest)
+            throws AuthenticationException {
 
         try {
-            final Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            authenticationRequest.getUsername(), authenticationRequest.getPassword()));
-
+            Authentication authentication = getAuthenticate(authenticationRequest);
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
@@ -68,8 +65,13 @@ public class AuthenticationController {
         }
     }
 
+    private Authentication getAuthenticate(@RequestBody JwtAuthenticationRequest authRequest) {
+        return authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> registerNewUser(@RequestBody UserModel userModel, HttpServletResponse response)
+    public ResponseEntity<?> registerNewUser(@RequestBody UserModel userModel)
             throws AuthenticationException, IOException {
 
         if (!userModel.isValid()) {
@@ -83,12 +85,12 @@ public class AuthenticationController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.GET)
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PREMIUM_USER','ROLE_ADMIN')")
     public ResponseEntity<?> authenticate(Principal user) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Collection<?extends GrantedAuthority> granted = auth.getAuthorities();
 
         SecurityUser securityUser = (SecurityUser) ((TokenBasedAuthentication) user).getPrincipal();
 
-        return new ResponseEntity<>(securityUser.getAuthoritie(), HttpStatus.OK);
+        UserData userData = new UserData(securityUser.getUsername(), securityUser.getEmail(), securityUser.getAuthoritie());
+
+        return new ResponseEntity<>(userData, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/change-password", method = RequestMethod.POST)

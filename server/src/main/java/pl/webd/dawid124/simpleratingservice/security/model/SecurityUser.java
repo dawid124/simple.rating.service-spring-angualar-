@@ -12,7 +12,7 @@ public class SecurityUser implements UserDetails {
     private String username;
     private String email;
     private String password;
-    private List<? extends GrantedAuthority> authorities;
+    private Collection<? extends GrantedAuthority> authorities;
     private Timestamp lastPasswordResetDate;
     private boolean enabled;
 
@@ -47,7 +47,7 @@ public class SecurityUser implements UserDetails {
     }
 
     public void setAuthoritie(Role role) {
-        this.authorities = (List<Authority>) Collections.singleton(new Authority(role));
+        this.authorities = Collections.singleton(new Authority(role));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class SecurityUser implements UserDetails {
         if (this.authorities.isEmpty()) {
             return null;
         }
-        return Role.valueOf(this.authorities.get(0).getAuthority());
+        return Role.valueOf(this.authorities.iterator().next().getAuthority());
     }
 
     public void setPassword(String password) {

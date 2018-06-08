@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupComponent implements OnInit {
 
-  constructor() { }
+  private _shown: boolean;
 
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+    this.shown = false;
+  }
+
+  show() {
+    this.shown = true;
+  }
+
+  hide() {
+    this.shown = false;
+  }
+
+  get shown(): boolean {
+    return this._shown;
+  }
+
+  set shown(value: boolean) {
+    this._shown = value;
+  }
 }

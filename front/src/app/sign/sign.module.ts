@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RegistrationComponent} from './component/registration/registration.component';
-import {LoginComponent} from './component/login/login.component';
-import {SignComponent} from './component/tabs/sign.component';
+import {RegistrationComponent} from './components/tabs/registration/registration.component';
+import {LoginComponent} from './components/tabs/login/login.component';
+import {SignComponent} from './components/tabs/sign.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxSpinnerModule} from 'ngx-spinner';
 
@@ -16,6 +16,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
+    MatDialogModule,
 
     NgxSpinnerModule,
     ReactiveFormsModule,
@@ -26,6 +27,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
   exports: [
     SignComponent
   ],
-  declarations: [RegistrationComponent, LoginComponent, SignComponent]
+  declarations: [RegistrationComponent, LoginComponent, SignComponent],
+  entryComponents: [RegistrationComponent]
 })
 export class SignModule { }

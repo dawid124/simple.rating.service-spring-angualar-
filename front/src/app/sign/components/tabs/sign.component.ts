@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -17,9 +17,23 @@ import {animate, style, transition, trigger} from '@angular/animations';
 })
 export class SignComponent implements OnInit {
 
-  constructor() { }
+  selectedTab: number;
 
-  ngOnInit() {
+  @Output() hideSignPopup: EventEmitter<any> = new EventEmitter();
+
+  constructor() {
+    this.selectedTab = 0;
   }
 
+  ngOnInit() {
+
+  }
+
+  hidePopup() {
+    this.hideSignPopup.emit();
+  }
+
+  switchTab(tabIndex: number) {
+    this.selectedTab = tabIndex;
+  }
 }

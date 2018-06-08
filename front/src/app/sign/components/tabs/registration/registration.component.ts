@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {EMAIL_PATTERN} from '../../../../environments/environment';
+import {EMAIL_PATTERN} from '../../../../../environments/environment';
 import {finalize} from 'rxjs/operators';
-import {Registration} from '../../../models/registration';
+import {Registration} from '../../../../models/registration';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {SignService} from '../../service/sign.service';
+import {SignService} from '../../../service/sign.service';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-registration',
@@ -15,8 +16,11 @@ export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
 
+  @Output() switchTab: EventEmitter<number> = new EventEmitter();
+
   constructor(private formBuilder: FormBuilder,
               private signService: SignService,
+              private dialog: MatDialog,
               private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
@@ -48,12 +52,11 @@ export class RegistrationComponent implements OnInit {
       .pipe(finalize(() => this.spinner.hide()))
       .subscribe(
         () => {
-
+          this.switchTab.emit(0);
         },
         (err) => {
           this.handleError(err);
         });
-
   }
 
   handleError(error: any) {
@@ -68,7 +71,12 @@ export class RegistrationComponent implements OnInit {
     if (!messageKey) {
       messageKey = 'SERVER_ERROR_MESSAGE';
     }
-    // this.popUps.createToastWithBlackBackground(this.toastCtrl, messageKey);
+
+    this.dialog.open(RegistrationComponent, {
+      data: {
+        animal: 'panda'
+      }
+    });
   }
 
   get username() {
