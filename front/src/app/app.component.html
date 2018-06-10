@@ -6,10 +6,6 @@
   <!--type = "ball-fussion">-->
 <!--</ngx-spinner>-->
 
-<button mat-raised-button color="primary" (click)="showSignPopup()">
-  {{'SIGN.FORM_LABEL_SIGN_IN' | translate}} / {{'SIGN.FORM_LABEL_SIGN_UP' | translate}}
-</button>
+<app-header></app-header>
 
-<app-popup #signPopup>
-  <app-sign (hideSignPopup)="hideSignPopup()"></app-sign>
-</app-popup>
+<router-outlet></router-outlet>

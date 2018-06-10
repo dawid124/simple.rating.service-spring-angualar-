@@ -1,0 +1,30 @@
+<app-popup #signPopup>
+  <app-sign (hideSignPopup)="hideSignPopup()"></app-sign>
+</app-popup>
+
+<div class="header">
+  <div class="header-container">
+    <div class="menu-container">
+      <a *ngIf="isAdmin()"
+         [routerLink]="['/product']"
+         routerLinkActive="active"
+         (click)="goToNewProduct()">
+      {{'PRODUCT.HEADER_NEW_PRODUCT_LABEL' | translate}}
+      </a>
+    </div>
+    <div class="find-container">
+
+    </div>
+    <div class="sign-container">
+      <a *ngIf="!isLogged()"
+         (click)="showSignPopup()">
+        {{'SIGN.FORM_LABEL_SIGN_IN' | translate}} / {{'SIGN.FORM_LABEL_SIGN_UP' | translate}}
+      </a>
+      <a *ngIf="isLogged()"
+         (click)="logout()">
+        {{'SIGN.FORM_LABEL_LOGOUT' | translate}}
+      </a>
+    </div>
+  </div>
+</div>
+

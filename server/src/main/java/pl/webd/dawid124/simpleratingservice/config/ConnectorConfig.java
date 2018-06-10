@@ -12,7 +12,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan("pl.webd.dawid124.simpleratingservice")
+@MapperScan(basePackages = {
+        "pl.webd.dawid124.simpleratingservice.comments.mapper",
+        "pl.webd.dawid124.simpleratingservice.file.mapper",
+        "pl.webd.dawid124.simpleratingservice.products.mapper",
+        "pl.webd.dawid124.simpleratingservice.ratings.mapper",
+        "pl.webd.dawid124.simpleratingservice.type.mapper",
+        "pl.webd.dawid124.simpleratingservice.users.mapper"
+})
 public class ConnectorConfig {
 
     @Value("${spring.datasource.url}")

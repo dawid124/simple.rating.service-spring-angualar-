@@ -12,6 +12,11 @@ export const api = {
     LOGIN: '/auth/login',
     REGISTRATION: '/auth/register',
     AUTHENTICATE: '/auth/authenticate'
+  },
+  PRODUCT: {
+    NEW_PRODUCT: '/product',
+    NEW_TYPE: '/type',
+    ALL_TYPES: '/types'
   }
 };
 

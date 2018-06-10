@@ -7,7 +7,22 @@
     "FORM_LABEL_EMAIL": "E-mail",
     "FORM_LABEL_PASSWORD": "Hasło",
     "FORM_LABEL_SIGN_IN": "Zaloguj",
-    "FORM_LABEL_SIGN_UP": "Zarejestruj"
+    "FORM_LABEL_LOGOUT": "Wyloguj",
+    "FORM_LABEL_SIGN_UP": "Zarejestruj",
+    "CLOSE_POPUP": "Zamknij"
+  },
+  "PRODUCT": {
+    "HEADER_NEW_PRODUCT_LABEL": "Nowy produkt",
+    "FORM_LABEL_NAME": "Nazwa",
+    "FORM_LABEL_DESCRIPTIONS": "Opis",
+    "FORM_LABEL_PRICE": "Cena",
+    "FORM_LABEL_TYPE": "Typ",
+    "FORM_LABEL_COLOR": "Kolor",
+    "FORM_LABEL_PRODUCER": "Producent",
+    "FORM_LABEL_SAVE": "Zapisz",
+    "FORM_LABEL_ADD_PICTURE": "Dodaj",
+    "FORM_LABEL_ADD_SELECT_PICTURE": "Wybierz zdjęcie",
+    "FORM_LABEL_ADD_NEW": "Dodaj nowy"
   },
   "VALIDATION": {
     "REQUIRED": "To pole jest wymagane",

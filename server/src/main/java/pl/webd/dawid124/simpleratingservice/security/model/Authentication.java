@@ -1,16 +1,11 @@
-package pl.webd.dawid124.simpleratingservice.security.auth.http;
+package pl.webd.dawid124.simpleratingservice.security.model;
 
-public class JwtAuthenticationRequest {
+public class Authentication {
+
     private String username;
     private String password;
 
-    public JwtAuthenticationRequest() {
-        super();
-    }
-
-    public JwtAuthenticationRequest(String username, String password) {
-        this.setUsername(username);
-        this.setPassword(password);
+    public Authentication() {
     }
 
     public String getUsername() {

@@ -19,7 +19,10 @@ export class SignService {
 
   signin(loginModel: Login): Observable<any> {
     return this.httpClient.post(`${environment.SERVER_ADDRESS}${api.AUTH.LOGIN}`, loginModel, {responseType: 'text'})
-      .pipe(tap(jwt => this.handleJwtResponse(jwt)));
+      .pipe(tap(jwt => {
+        AuthService.token = jwt;
+        this.handleJwtResponse(jwt);
+      }));
   }
 
   logout() {

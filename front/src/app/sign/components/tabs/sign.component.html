@@ -5,14 +5,15 @@
   <mat-tab label="{{'SIGN.LOGIN_LABEL' | translate}}">
 
     <ng-template matTabContent>
-      <app-login (hidePopup)="hidePopup()"></app-login>
+      <app-login (hidePopupEmitter)="hidePopup()"></app-login>
     </ng-template>
 
   </mat-tab>
   <mat-tab label="{{'SIGN.REGISTRATION_LABEL' | translate}}">
 
     <ng-template matTabContent>
-      <app-registration (switchTab)="switchTab($event)"></app-registration>
+      <app-registration (switchTab)="switchTab($event)"
+                        (hidePopupEmitter)="hidePopup()"></app-registration>
     </ng-template>
 
   </mat-tab>

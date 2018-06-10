@@ -4,6 +4,8 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {SignService} from '../../../service/sign.service';
 import {finalize} from 'rxjs/operators';
 import {Login} from '../../../../models/login';
+import {AuthService} from '../../../../auth/auth.service';
+import {UserData} from '../../../../models/user-data';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +16,11 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  @Output() hidePopup: EventEmitter<any> = new EventEmitter();
+  @Output() hidePopupEmitter: EventEmitter<any> = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder,
               private signService: SignService,
+              private authService: AuthService,
               private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
@@ -37,7 +40,7 @@ export class LoginComponent implements OnInit {
       .pipe(finalize(() => this.spinner.hide()))
       .subscribe(
         () => {
-          this.hidePopup.emit();
+          this.hidePopup();
         },
         (err) => {
           this.handleError(err);
@@ -65,6 +68,10 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  hidePopup() {
+    this.hidePopupEmitter.emit();
   }
 
   get username() {

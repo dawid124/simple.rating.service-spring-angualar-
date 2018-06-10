@@ -1,0 +1,47 @@
+@import "../../../assets/styles/variables";
+
+.header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: $primaryColor;
+  .header-container {
+    position: relative;
+    width: $site-max-width;
+    height: 100%;
+    .find-container {
+      float: left;
+    }
+    .menu-container {
+      float: left;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sign-container {
+      float: right;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  a {
+    color: $white;
+    cursor: pointer;
+    font-size: $middle-font;
+    padding-right: 10px;
+    text-decoration: none;
+    &:hover {
+      color: $dark-white;
+    }
+
+    &.active {
+      color: $dark-white;
+      cursor: unset;
+    }
+  }
+}

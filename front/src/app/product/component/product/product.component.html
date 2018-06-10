@@ -1,0 +1,12 @@
+<div class="product-container">
+
+ <app-edit-product [product]="product"
+                   (switchEditMode)="switchEditMode($event)"
+                   *ngIf="editMode">
+ </app-edit-product>
+
+  <app-preview-product [product]="product"
+                       *ngIf="!editMode">
+  </app-preview-product>
+
+</div>

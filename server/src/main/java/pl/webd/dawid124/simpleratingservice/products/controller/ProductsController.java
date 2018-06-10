@@ -1,0 +1,54 @@
+package pl.webd.dawid124.simpleratingservice.products.controller;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import pl.webd.dawid124.simpleratingservice.file.service.FileService;
+import pl.webd.dawid124.simpleratingservice.products.model.Product;
+import pl.webd.dawid124.simpleratingservice.products.service.ProductsService;
+
+import javax.validation.Valid;
+import java.io.IOException;
+
+@RestController
+public class ProductsController {
+
+    private ProductsService productsService;
+    private FileService fileService;
+
+    public ProductsController(ProductsService productsService, FileService fileService) {
+        this.productsService = productsService;
+        this.fileService = fileService;
+    }
+
+    @RequestMapping(value = "/product", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<?> creteNewProduct(@RequestParam("product") @Valid String productStr,
+                                             @RequestParam("picture") MultipartFile[] pictures)
+            throws AuthenticationException, IOException {
+
+        Product product = new ObjectMapper().readValue(productStr, Product.class);
+        if (!product.valid()) {
+            return new ResponseEntity<>("NOT_VALID", HttpStatus.BAD_REQUEST);
+        }
+
+        int updatedCount = productsService.createProduct(product);
+
+        for (MultipartFile picture: pictures) {
+            fileService.createFile(picture.getBytes(), product.getId());
+        }
+
+        if (updatedCount > 0) {
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+}

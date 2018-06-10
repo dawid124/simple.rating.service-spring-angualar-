@@ -77,7 +77,7 @@ public class UserModel implements Serializable {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
 
-    public boolean isValid() {
+    public boolean valid() {
         return StringUtils.hasText(username)
                 && StringUtils.hasText(password)
                 && EmailValidator.getInstance().isValid(email);

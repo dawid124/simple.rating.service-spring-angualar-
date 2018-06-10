@@ -1,0 +1,21 @@
+<div class="new-type">
+
+  <mat-form-field>
+    <input matInput
+           placeholder="{{'PRODUCT.FORM_LABEL_NAME' | translate}}"
+           [(ngModel)]="type.name"
+           [formControl]="nameControl">
+
+    <mat-error *ngIf="!nameControl.valid">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput
+           placeholder="{{'PRODUCT.FORM_LABEL_DESCRIPTIONS' | translate}}"
+           [(ngModel)]="type.descriptions">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="addNewProductType()">
+    {{'PRODUCT.FORM_LABEL_SAVE' | translate}}
+  </button>
+</div>

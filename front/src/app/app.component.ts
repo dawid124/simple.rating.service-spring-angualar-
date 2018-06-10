@@ -11,8 +11,6 @@ import {PopupComponent} from './global/popup/popup.component';
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('signPopup') signPopup: PopupComponent;
-
   constructor(private translate: TranslateService,
               private spinner: NgxSpinnerService,
               private authService: AuthService) {
@@ -21,14 +19,6 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
 
-  }
-
-  showSignPopup() {
-      this.signPopup.show();
-  }
-
-  hideSignPopup() {
-    this.signPopup.hide();
   }
 
   initializeMultilanguage() {
@@ -40,13 +30,6 @@ export class AppComponent implements OnInit {
   }
 
   private initializeUserData() {
-    this.authService.getTokenFromStorage()
-      .subscribe((token: string) => {
-        AuthService.token = token;
-      });
-
-    if (AuthService.token) {
-      this.authService.loadUserData();
-    }
+    this.authService.initializeUserData();
   }
 }

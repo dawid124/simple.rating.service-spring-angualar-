@@ -17,6 +17,7 @@ export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
 
   @Output() switchTab: EventEmitter<number> = new EventEmitter();
+  @Output() hidePopupEmitter: EventEmitter<any> = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder,
               private signService: SignService,
@@ -77,6 +78,10 @@ export class RegistrationComponent implements OnInit {
         animal: 'panda'
       }
     });
+  }
+
+  hidePopup() {
+    this.hidePopupEmitter.emit();
   }
 
   get username() {

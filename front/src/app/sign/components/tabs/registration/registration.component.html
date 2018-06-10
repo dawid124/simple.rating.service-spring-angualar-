@@ -47,6 +47,10 @@
   </p>
 
   <div class="button-footer">
+    <button mat-raised-button color="primary" (click)="hidePopup()">
+      {{'SIGN.CLOSE_POPUP' | translate}}
+    </button>
+
     <button mat-raised-button color="primary" type="submit"
             [disabled]="!registrationForm.valid || repassword.value !== password.value">
       {{'SIGN.FORM_LABEL_SIGN_UP' | translate}}

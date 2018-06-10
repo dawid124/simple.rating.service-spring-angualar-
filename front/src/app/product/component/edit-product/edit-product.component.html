@@ -1,0 +1,77 @@
+<div class="product">
+  <div class="image">
+    <div class="edit-mode">
+      <div class="picture" *ngFor="let picture of pictures; let i = index">
+        <img [src]="picture.data" > <br/>
+        <input type='file' #imageUpload name="imageUpload" (change)="onSelectFile($event, i)" class="hide">
+        <button mat-raised-button color="primary" class="add-picture"
+                for="imageUpload"
+                (click)="imageUpload.click()">
+          {{'PRODUCT.FORM_LABEL_ADD_SELECT_PICTURE' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="details">
+    <div class="edit-mode">
+
+      <mat-form-field>
+        <input matInput
+               placeholder="{{'PRODUCT.FORM_LABEL_NAME' | translate}}"
+               [(ngModel)]="product.name"
+               [formControl]="nameControl">
+
+        <mat-error *ngIf="!nameControl.valid">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="product.descriptions"
+               placeholder="{{'PRODUCT.FORM_LABEL_DESCRIPTIONS' | translate}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="number"
+               placeholder="{{'PRODUCT.FORM_LABEL_PRICE' | translate}}"
+               [(ngModel)]="product.price"
+               [formControl]="priceControl">
+
+        <mat-error *ngIf="!priceControl.valid">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="{{'PRODUCT.FORM_LABEL_TYPE' | translate}}"
+                    [(ngModel)]="product.type"
+                    [formControl]="typeControl">
+          <mat-option (click)="showAddNewType()">
+            {{'PRODUCT.FORM_LABEL_ADD_NEW' | translate}}
+          </mat-option>
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!typeControl.valid">{{'VALIDATION.REQUIRED' | translate}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="product.color"
+               placeholder="{{'PRODUCT.FORM_LABEL_COLOR' | translate}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="product.producer"
+               placeholder="{{'PRODUCT.FORM_LABEL_PRODUCER' | translate}}">
+      </mat-form-field>
+
+    </div>
+  </div>
+</div>
+
+<div class="buttons">
+  <button mat-raised-button color="primary" (click)="createProduct()">
+    {{'PRODUCT.FORM_LABEL_SAVE' | translate}}
+  </button>
+</div>

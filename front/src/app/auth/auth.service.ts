@@ -23,14 +23,39 @@ export class AuthService {
 
   setTokenFromStorage(token: string): void {
     this.storage.setItem(environment.JWT_TOKEN, token)
-      .subscribe(() => token);
+      .subscribe(() => {
+        this.loadUserData();
+      });
   }
 
   removeTokenFromStorage(): Observable<any> {
     return this.storage.removeItem(environment.JWT_TOKEN);
   }
 
-  loadUserData(): void {
+  initializeUserData(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      this.getTokenFromStorage()
+        .subscribe((token: string) => {
+          AuthService.token = token;
+          if (AuthService.token) {
+            this.loadUserDataPromise(resolve);
+          }
+        });
+    });
+  }
+
+  private loadUserDataPromise(resolve): void {
+    this.checkPrivilege().subscribe(
+      (userData: UserData) => {
+        this._userData = userData;
+        resolve(true);
+      }, (err) => {
+        this._userData = null;
+        resolve(true);
+      });
+  }
+
+  private loadUserData(): void {
     this.checkPrivilege().subscribe(
       (userData: UserData) => {
         this._userData = userData;
@@ -39,7 +64,7 @@ export class AuthService {
       });
   }
 
-  checkPrivilege(): Observable<UserData> {
+  private checkPrivilege(): Observable<UserData> {
     return this.httpClient.get<UserData>(`${environment.SERVER_ADDRESS}${api.AUTH.AUTHENTICATE}`);
   }
 

@@ -1,12 +1,13 @@
-package pl.webd.dawid124.simpleratingservice.users.maper;
+package pl.webd.dawid124.simpleratingservice.users.mapper;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.springframework.stereotype.Repository;
 import pl.webd.dawid124.simpleratingservice.users.model.UserModel;
 
 @Repository
+@Mapper
 public interface UserMapper {
 
     @Insert("insert into users(username,email,password,role,enabled) values(#{username},#{email},#{password},#{role},#{enabled})")

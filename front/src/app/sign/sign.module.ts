@@ -25,7 +25,9 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     TranslateModule
   ],
   exports: [
-    SignComponent
+    SignComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   declarations: [RegistrationComponent, LoginComponent, SignComponent],
   entryComponents: [RegistrationComponent]
