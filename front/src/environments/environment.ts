@@ -15,8 +15,10 @@ export const api = {
   },
   PRODUCT: {
     NEW_PRODUCT: '/product',
+    PRODUCT: '/product/',
     NEW_TYPE: '/type',
-    ALL_TYPES: '/types'
+    ALL_TYPES: '/types',
+    IMAGE_CONTROLLER: '/image/',
   }
 };
 

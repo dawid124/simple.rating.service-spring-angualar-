@@ -1,16 +1,16 @@
 package pl.webd.dawid124.simpleratingservice.file.model;
 
-public class MyFile {
+public class Picture {
 
     private long id;
     private String label;
     private String src;
     private long productId;
 
-    public MyFile() {
+    public Picture() {
     }
 
-    public MyFile(String src, long productId) {
+    public Picture(String src, long productId) {
         this.src = src;
         this.productId = productId;
     }

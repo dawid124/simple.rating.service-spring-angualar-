@@ -1,7 +1,10 @@
 package pl.webd.dawid124.simpleratingservice.products.model;
 
 import org.springframework.util.StringUtils;
+import pl.webd.dawid124.simpleratingservice.file.model.Picture;
 import pl.webd.dawid124.simpleratingservice.type.model.Type;
+
+import java.util.List;
 
 public class Product {
 
@@ -12,6 +15,7 @@ public class Product {
     private Type type;
     private String color;
     private String producer;
+    private List<Picture> pictures;
 
 
     public Product() {
@@ -77,5 +81,13 @@ public class Product {
         return StringUtils.hasText(name)
                 && price > 0
                 && type != null;
+    }
+
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
     }
 }

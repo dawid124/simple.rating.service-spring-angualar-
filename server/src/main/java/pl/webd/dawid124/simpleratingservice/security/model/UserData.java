@@ -2,9 +2,6 @@ package pl.webd.dawid124.simpleratingservice.security.model;
 
 import java.io.Serializable;
 
-/**
- * @author Dawid.Gaik on 08.06.2018.
- */
 public class UserData implements Serializable {
 
     private String username;

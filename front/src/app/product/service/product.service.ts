@@ -24,5 +24,9 @@ export class ProductService {
   getAllTypes(): Observable<Array<Type>> {
     return this.httpClient.get<Array<Type>>(`${environment.SERVER_ADDRESS}${api.PRODUCT.ALL_TYPES}`);
   }
+
+  getProductById(productId: number): Observable<Product> {
+    return this.httpClient.get<Product>(`${environment.SERVER_ADDRESS}${api.PRODUCT.PRODUCT}${productId}`);
+  }
 }
 

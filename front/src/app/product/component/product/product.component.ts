@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../../../models/product';
+import {ActivatedRoute} from '@angular/router';
+import {ProductService} from '../../service/product.service';
 
 @Component({
   selector: 'app-product',
@@ -11,13 +13,32 @@ export class ProductComponent implements OnInit {
   product: Product;
   editMode: boolean;
 
-  constructor() {
+  constructor(private route: ActivatedRoute,
+              private productService: ProductService) {
+
+
     this.product = new Product();
-    this.editMode = true;
+    this.route.params.subscribe( params => {
+      const productId: number = params.id;
+      if (productId) {
+        this.editMode = false;
+        this.loadProductData(productId);
+      } else {
+        this.editMode = true;
+      }
+    });
   }
 
   ngOnInit() {
 
+  }
+
+  loadProductData(productId: number) {
+    this.productService.getProductById(productId)
+      .subscribe((product: Product) => {
+        debugger;
+        this.product = product;
+    });
   }
 
   switchEditMode(value: boolean) {

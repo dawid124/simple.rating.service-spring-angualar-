@@ -5,7 +5,7 @@ import {NgModule} from '@angular/core';
 const APP_ROUTES: Route[] = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
   {path: 'product', component: ProductComponent},
-  // {path: 'product/:id', component: ProductComponent}
+  {path: 'product/:id', component: ProductComponent}
 ];
 
 @NgModule({

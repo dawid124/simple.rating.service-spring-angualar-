@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.webd.dawid124.simpleratingservice.file.mapper.FileMapper;
-import pl.webd.dawid124.simpleratingservice.file.model.MyFile;
+import pl.webd.dawid124.simpleratingservice.file.model.Picture;
 import pl.webd.dawid124.simpleratingservice.file.service.FileService;
 
 import java.io.File;
@@ -31,14 +31,19 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public MyFile createFile(byte[] bytes, long productId) {
+    public Picture createFile(byte[] bytes, long productId) {
         String path = storeFile(bytes);
 
-        MyFile myFile = new MyFile(path, productId);
+        Picture picture = new Picture(path, productId);
 
-        fileMapper.insertFile(myFile);
+        fileMapper.insertFile(picture);
 
-        return myFile;
+        return picture;
+    }
+
+    @Override
+    public File getFile(String path) {
+        return new File(FILE_PATH + path);
     }
 
     private String storeFile(byte[] bytes) {
@@ -51,6 +56,6 @@ public class FileServiceImpl implements FileService {
             return null;
         }
 
-        return path;
+        return uuid.toString();
     }
 }

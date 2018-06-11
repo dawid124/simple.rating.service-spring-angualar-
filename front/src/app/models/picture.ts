@@ -1,10 +1,5 @@
-export class Picture {
-  name: string;
-  data: File;
-
-
-  constructor() {
-    this.name = '';
-    this.data = null;
-  }
+export interface Picture {
+  id: number;
+  label: string;
+  src: string;
 }

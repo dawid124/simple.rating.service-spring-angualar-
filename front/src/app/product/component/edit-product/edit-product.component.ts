@@ -5,7 +5,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {NewTypePopupComponent} from './new-type-popup/new-type-popup.component';
 import {MatDialog} from '@angular/material';
 import {ProductService} from '../../service/product.service';
-import {Picture} from '../../../models/picture';
+import {UiPicture} from '../../../models/ui-picture';
 
 @Component({
   selector: 'app-edit-product',
@@ -15,7 +15,7 @@ import {Picture} from '../../../models/picture';
 export class EditProductComponent implements OnInit {
 
   @Input('product') product: Product;
-  pictures: Array<Picture>;
+  pictures: Array<UiPicture>;
   types: Array<Type>;
 
   @Output() switchEditMode: EventEmitter<boolean> = new EventEmitter();
@@ -34,7 +34,7 @@ export class EditProductComponent implements OnInit {
   }
 
   addNewPicture() {
-    this.pictures.push(new Picture());
+    this.pictures.push(new UiPicture());
   }
 
   onSelectFile(event, index) {
@@ -45,7 +45,7 @@ export class EditProductComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        const picture: Picture = this.pictures[index];
+        const picture: UiPicture = this.pictures[index];
         picture.data = reader.result;
         picture.name = file.name;
         console.log(picture.name);

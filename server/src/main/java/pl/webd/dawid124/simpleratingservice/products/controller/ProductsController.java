@@ -5,10 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.webd.dawid124.simpleratingservice.file.service.FileService;
 import pl.webd.dawid124.simpleratingservice.products.model.Product;
@@ -35,6 +32,7 @@ public class ProductsController {
             throws AuthenticationException, IOException {
 
         Product product = new ObjectMapper().readValue(productStr, Product.class);
+
         if (!product.valid()) {
             return new ResponseEntity<>("NOT_VALID", HttpStatus.BAD_REQUEST);
         }
@@ -51,4 +49,17 @@ public class ProductsController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+
+    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getProduct(@PathVariable("id") long id) {
+        Product product = productsService.getProduct(id);
+
+        if (product != null) {
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
