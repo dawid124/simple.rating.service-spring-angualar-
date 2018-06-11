@@ -26,10 +26,14 @@
     "FORM_LABEL_ADD_NEW": "Dodaj nowy"
   },
   "COMMENT": {
-    "FORM_LABEL": "Komentarze"
+    "FORM_LABEL": "Komentarze",
+    "ADD_BUTTON": "Dodaj",
+    "ADD_DESCRIPTIONS": "Dodaj komentarz"
   },
   "RATINGS": {
-    "FORM_LABEL": "Oceny"
+    "FORM_LABEL": "Oceny",
+    "ADD_BUTTON": "Dodaj",
+    "ADD_DESCRIPTIONS": "Dodaj ocenę"
   },
   "VALIDATION": {
     "REQUIRED": "To pole jest wymagane",

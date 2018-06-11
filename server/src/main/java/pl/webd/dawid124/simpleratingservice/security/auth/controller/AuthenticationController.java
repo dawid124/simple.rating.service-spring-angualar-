@@ -79,7 +79,8 @@ public class AuthenticationController {
 
         SecurityUser securityUser = (SecurityUser) ((TokenBasedAuthentication) user).getPrincipal();
 
-        UserData userData = new UserData(securityUser.getUsername(), securityUser.getEmail(), securityUser.getAuthoritie());
+        UserData userData = new UserData(securityUser.getUserId(), securityUser.getUsername(),
+                securityUser.getEmail(), securityUser.getAuthoritie());
 
         return new ResponseEntity<>(userData, HttpStatus.OK);
     }

@@ -19,6 +19,10 @@ export const api = {
     NEW_TYPE: '/type',
     ALL_TYPES: '/types',
     IMAGE_CONTROLLER: '/image/',
+  },
+  RATING: {
+    ALL_RATING: '/ratingsNumber',
+    CREATE_RATING: '/rating/'
   }
 };
 
