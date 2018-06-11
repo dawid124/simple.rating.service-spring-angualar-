@@ -15,6 +15,12 @@ public interface TypeMapper {
     @Options(useGeneratedKeys=true)
     int insertType(Type type);
 
+    @Select("select * from product_types where id = #{id}")
+    Type getTypeById(long id);
+
+    @Select("select t.* from product_types t join products p on p.TYPE_FK = t.id where p.id = #{id}")
+    Type getTypeByProductId(long id);
+
     @Select("select * from product_types")
     List<Type> fetchAllTypes();
 }

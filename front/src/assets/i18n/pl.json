@@ -19,10 +19,17 @@
     "FORM_LABEL_TYPE": "Typ",
     "FORM_LABEL_COLOR": "Kolor",
     "FORM_LABEL_PRODUCER": "Producent",
+    "FORM_LABEL_RATING": "Ocena",
     "FORM_LABEL_SAVE": "Zapisz",
     "FORM_LABEL_ADD_PICTURE": "Dodaj",
     "FORM_LABEL_ADD_SELECT_PICTURE": "Wybierz zdjęcie",
     "FORM_LABEL_ADD_NEW": "Dodaj nowy"
+  },
+  "COMMENT": {
+    "FORM_LABEL": "Komentarze"
+  },
+  "RATINGS": {
+    "FORM_LABEL": "Oceny"
   },
   "VALIDATION": {
     "REQUIRED": "To pole jest wymagane",

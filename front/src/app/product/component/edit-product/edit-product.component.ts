@@ -6,6 +6,7 @@ import {NewTypePopupComponent} from './new-type-popup/new-type-popup.component';
 import {MatDialog} from '@angular/material';
 import {ProductService} from '../../service/product.service';
 import {UiPicture} from '../../../models/ui-picture';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-product',
@@ -18,13 +19,12 @@ export class EditProductComponent implements OnInit {
   pictures: Array<UiPicture>;
   types: Array<Type>;
 
-  @Output() switchEditMode: EventEmitter<boolean> = new EventEmitter();
-
   typeControl = new FormControl('', [Validators.required]);
   priceControl = new FormControl('', [Validators.required]);
   nameControl = new FormControl('', [Validators.required]);
 
-  constructor(public dialog: MatDialog,
+  constructor(private dialog: MatDialog,
+              private router: Router,
               private productService: ProductService) { }
 
   ngOnInit() {
@@ -59,10 +59,6 @@ export class EditProductComponent implements OnInit {
     const formData: FormData = new FormData();
     formData.append('product', JSON.stringify(this.product));
 
-
-
-
-    debugger;
     const pictures = this.pictures.splice(0, this.pictures.length - 1);
     for (const picture of pictures) {
       formData.append('picture',  new Blob([picture.data], {type: 'application/image'}));
@@ -71,7 +67,7 @@ export class EditProductComponent implements OnInit {
     this.productService.createProduct(formData)
       .subscribe((product: Product) => {
         this.product = product;
-        this.switchEditMode.emit(false);
+        this.router.navigate([`/product/${product.id}`]);
       });
   }
 

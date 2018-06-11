@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../../models/product';
-import {api, environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-preview-product',
@@ -16,7 +15,7 @@ export class PreviewProductComponent implements OnInit {
   ngOnInit() {
   }
 
-  getImageUrl(src: string) {
-    return `${environment.SERVER_ADDRESS}${api.PRODUCT.IMAGE_CONTROLLER}${src}`;
+  calculateRating() {
+
   }
 }

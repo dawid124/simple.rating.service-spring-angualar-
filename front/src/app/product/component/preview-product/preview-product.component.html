@@ -1,24 +1,76 @@
 <div class="product">
-  <div class="image" *ngIf="product.pictures">
-    <div class="preview-mode">
-      <div class="picture"
-           *ngFor="let picture of product.pictures; let i = index">
-        <img [src]="getImageUrl(picture.src)" > <br/>
-      </div>
-    </div>
-  </div>
+  <app-gallery *ngIf="product?.pictures.length > 0" [pictures]="product?.pictures"></app-gallery>
 
   <div class="details">
     <div class="preview-mode">
 
+      <mat-form-field>
+        <input matInput
+               disabled="true"
+               placeholder="{{'PRODUCT.FORM_LABEL_NAME' | translate}}"
+               [ngModel]="product?.name"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               disabled="true"
+               [ngModel]="product?.descriptions"
+               placeholder="{{'PRODUCT.FORM_LABEL_DESCRIPTIONS' | translate}}"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               disabled="true"
+               placeholder="{{'PRODUCT.FORM_LABEL_PRICE' | translate}}"
+               [ngModel]="product?.price"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               disabled="true"
+               placeholder="{{'PRODUCT.FORM_LABEL_TYPE' | translate}}"
+               [ngModel]="product?.type?.name"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               disabled="true"
+               [ngModel]="product?.color"
+               placeholder="{{'PRODUCT.FORM_LABEL_COLOR' | translate}}"/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               disabled="true"
+               [ngModel]="product?.producer"
+               placeholder="{{'PRODUCT.FORM_LABEL_PRODUCER' | translate}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{'PRODUCT.FORM_LABEL_RATING' | translate}}</mat-label>
+        <input matInput
+               disabled="true"
+               [ngModel]="calculateRating()"
+               placeholder="">
+      </mat-form-field>
     </div>
   </div>
 </div>
 
 <div class="ratings">
-
+  <div class="separator">
+    <div class="text">
+      {{'RATINGS.FORM_LABEL' | translate}}
+    </div>
+  </div>
+  <app-rating></app-rating>
 </div>
 
 <div class="comments">
-
+  <div class="separator">
+    <div class="text">
+    {{'COMMENT.FORM_LABEL' | translate}}
+    </div>
+  </div>
+  <app-comments></app-comments>
 </div>

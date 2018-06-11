@@ -44,7 +44,7 @@
     .details {
       flex-basis: max($site-column-max-width);
       padding: 15px;
-      .edit-mode {
+      .edit-mode, .preview-mode {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -59,5 +59,25 @@
   .buttons {
     float: right;
   }
+}
+
+.separator {
+  width: 100%;
+  padding-left: 15px;
+  height: 25px;
+  border-bottom: 1px dotted $transparent-black5;
+  .text {
+    margin-top: 10px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+}
+
+.ratings {
+  min-height: 100px;
+}
+
+.comments {
+  min-height: 100px;
 }
 

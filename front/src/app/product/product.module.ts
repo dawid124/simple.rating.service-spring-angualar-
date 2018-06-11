@@ -7,7 +7,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EditProductComponent} from './component/edit-product/edit-product.component';
 import {PreviewProductComponent} from './component/preview-product/preview-product.component';
 import {NewTypePopupComponent} from './component/edit-product/new-type-popup/new-type-popup.component';
-import {ProductService} from './service/product.service';
+import {GalleryComponent} from './component/preview-product/gallery/gallery.component';
+import { RatingComponent } from './component/preview-product/rating/rating.component';
+import { CommentsComponent } from './component/preview-product/comments/comments.component';
 
 @NgModule({
   imports: [
@@ -24,7 +26,7 @@ import {ProductService} from './service/product.service';
     MatDialogModule,
     TranslateModule
   ],
-  declarations: [ProductComponent, EditProductComponent, PreviewProductComponent, NewTypePopupComponent],
+  declarations: [ProductComponent, EditProductComponent, PreviewProductComponent, NewTypePopupComponent, GalleryComponent, RatingComponent, CommentsComponent],
   entryComponents: [NewTypePopupComponent]
 })
 export class ProductModule { }

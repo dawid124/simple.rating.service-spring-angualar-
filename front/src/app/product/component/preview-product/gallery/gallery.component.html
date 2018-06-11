@@ -1,0 +1,13 @@
+<div class="gallery-container" *ngIf="pictures">
+
+  <div class="preview-picture">
+    <img [src]="getImageUrl(preview?.src)">
+  </div>
+
+  <div class="other-picture">
+    <img *ngFor="let picture of othersPicture"
+         (click)="changePreview(picture)"
+         [src]="getImageUrl(picture.src)">
+  </div>
+
+</div>

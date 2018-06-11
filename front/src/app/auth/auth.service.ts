@@ -39,6 +39,8 @@ export class AuthService {
           AuthService.token = token;
           if (AuthService.token) {
             this.loadUserDataPromise(resolve);
+          } else {
+            resolve(true);
           }
         });
     });

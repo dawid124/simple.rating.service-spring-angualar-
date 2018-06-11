@@ -8,6 +8,7 @@ import pl.webd.dawid124.simpleratingservice.file.model.Picture;
 import pl.webd.dawid124.simpleratingservice.products.mapper.ProductsMapper;
 import pl.webd.dawid124.simpleratingservice.products.model.Product;
 import pl.webd.dawid124.simpleratingservice.products.service.ProductsService;
+import pl.webd.dawid124.simpleratingservice.type.mapper.TypeMapper;
 
 import java.util.List;
 
@@ -17,10 +18,12 @@ public class ProductsServiceImpl implements ProductsService {
 
     private ProductsMapper productsMapper;
     private FileMapper fileMapper;
+    private TypeMapper typeMapper;
 
-    public ProductsServiceImpl(ProductsMapper productsMapper, FileMapper fileMapper) {
+    public ProductsServiceImpl(ProductsMapper productsMapper, FileMapper fileMapper, TypeMapper typeMapper) {
         this.productsMapper = productsMapper;
         this.fileMapper = fileMapper;
+        this.typeMapper = typeMapper;
     }
 
     @Override
@@ -34,9 +37,9 @@ public class ProductsServiceImpl implements ProductsService {
         if (product == null) {
             return null;
         }
-
-        List<Picture> pictures = fileMapper.getPicturesByProductId(id);
-        product.setPictures(pictures);
+        
+        product.setType(typeMapper.getTypeByProductId(id));
+        product.setPictures(fileMapper.getPicturesByProductId(id));
         return product;
     }
 
