@@ -20,10 +20,16 @@
       border-bottom: 1px dotted $transparent-black5;
       .image {
         margin: 5px;
+        height: 90px;
+        width: 90px;
         img {
           height: 90px;
           width: 90px;
           object-fit: cover;
+
+          &[src=''], &[src=null] {
+            display: none;
+          }
         }
       }
 

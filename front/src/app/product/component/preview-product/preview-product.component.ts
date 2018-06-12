@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../../models/product';
 import {Router} from '@angular/router';
+import {Role} from '../../../models/role';
+import {AuthService} from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-preview-product',
@@ -12,7 +14,8 @@ export class PreviewProductComponent implements OnInit {
   @Input('product') product: Product;
   @Output() switchEditMode: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private router: Router) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -31,5 +34,13 @@ export class PreviewProductComponent implements OnInit {
   editProduct() {
     this.switchEditMode.emit(true);
     this.router.navigate(['/product-details/', this.product.id, 'edit']);
+  }
+
+  isAdmin(): boolean {
+    if (!this.authService.userData) {
+      return false;
+    }
+
+    return this.authService.userData.role === Role.ROLE_ADMIN;
   }
 }

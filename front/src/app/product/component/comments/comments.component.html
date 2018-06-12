@@ -6,7 +6,9 @@
     </mat-form-field>
   </div>
   <div class="button">
-    <button mat-raised-button color="primary" (click)="addComment()">
+    <button mat-raised-button color="primary"
+            [disabled]="!newComment.descriptions"
+            (click)="addComment()">
       {{'COMMENT.ADD_BUTTON' | translate}}
     </button>
   </div>

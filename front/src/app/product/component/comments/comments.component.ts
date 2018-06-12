@@ -25,6 +25,7 @@ export class CommentsComponent implements OnInit {
   addComment() {
     this.newComment.date = new Date();
     this.newComment.userId = this.authService.userData.id;
+    this.newComment.username = this.authService.userData.username;
     this.newComment.productId = this.product.id;
 
     this.commentService.createComment(this.newComment)

@@ -14,7 +14,9 @@
     </span>
   </div>
   <div class="button">
-    <button mat-raised-button color="primary" (click)="addRating()">
+    <button mat-raised-button color="primary"
+            [disabled]="newRating.rating === 0"
+            (click)="addRating()">
       {{'RATINGS.ADD_BUTTON' | translate}}
     </button>
   </div>

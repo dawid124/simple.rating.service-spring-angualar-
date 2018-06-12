@@ -1,5 +1,6 @@
 package pl.webd.dawid124.simpleratingservice.file.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
@@ -15,6 +16,9 @@ public interface FileMapper {
     @Options(useGeneratedKeys=true)
     int insertFile(Picture picture);
 
-    @Select("select * from pictures WHERE product_fk=#{productId}")
+    @Select("select * from pictures where product_fk=#{productId}")
     List<Picture> getPicturesByProductId(long productId);
+
+    @Delete("delete from pictures where id = #{id}")
+    void removeFile(long id);
 }

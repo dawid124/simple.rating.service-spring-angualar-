@@ -26,6 +26,7 @@ export class RatingComponent implements OnInit {
   addRating() {
     this.newRating.date = new Date();
     this.newRating.userId = this.authService.userData.id;
+    this.newRating.username = this.authService.userData.username;
     this.newRating.productId = this.product.id;
 
     this.ratingService.createRating(this.newRating)

@@ -11,6 +11,7 @@ import pl.webd.dawid124.simpleratingservice.file.model.Picture;
 import pl.webd.dawid124.simpleratingservice.file.service.FileService;
 
 import javax.xml.bind.DatatypeConverter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -48,6 +49,15 @@ public class FileServiceImpl implements FileService {
     @Override
     public FileSystemResource getFile(String path) {
         return  new FileSystemResource(FILE_PATH + path);
+    }
+
+    @Override
+    public void removeFile(Picture picture) {
+        fileMapper.removeFile(picture.getId());
+
+        String path = FILE_PATH + picture.getSrc();
+        File file = new File(path);
+        file.delete();
     }
 
     private String storeFile(byte[] bytes) {

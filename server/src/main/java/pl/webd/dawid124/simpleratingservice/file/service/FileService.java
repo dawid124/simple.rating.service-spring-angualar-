@@ -10,4 +10,6 @@ public interface FileService {
     Picture createFile(byte[] file, long productId);
 
     FileSystemResource getFile(String path);
+
+    void removeFile(Picture picture);
 }
