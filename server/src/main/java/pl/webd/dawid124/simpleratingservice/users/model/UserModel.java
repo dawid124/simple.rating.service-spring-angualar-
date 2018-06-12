@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 
 public class UserModel implements Serializable {
 
-    private long userId;
+    private long id;
     private String username;
     private String email;
     private String password;
@@ -21,12 +21,12 @@ public class UserModel implements Serializable {
     public UserModel() {
     }
 
-    public long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUsername() {

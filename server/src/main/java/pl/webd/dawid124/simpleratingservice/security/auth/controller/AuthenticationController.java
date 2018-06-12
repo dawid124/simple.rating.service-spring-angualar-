@@ -74,7 +74,7 @@ public class AuthenticationController {
 
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.GET)
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PREMIUM_USER','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     public ResponseEntity<?> authenticate(Principal user) {
 
         SecurityUser securityUser = (SecurityUser) ((TokenBasedAuthentication) user).getPrincipal();

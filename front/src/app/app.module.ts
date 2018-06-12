@@ -11,12 +11,10 @@ import {PopupComponent} from './global/popup/popup.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import {HeaderComponent} from './global/header/header.component';
-import {RouterModule} from '@angular/router';
-import {ProductComponent} from './product/component/product/product.component';
 import {ProductModule} from './product/product.module';
 import {AppRoutingModule} from './app-routing-module';
-import {ProductService} from './product/service/product.service';
 import {AuthService} from './auth/auth.service';
+import {ProductListModule} from './product-list/product-list.module';
 
 
 export function configFactory(authService: AuthService) {
@@ -37,6 +35,7 @@ export function configFactory(authService: AuthService) {
     NgxSpinnerModule,
     HttpClientModule,
     ProductModule,
+    ProductListModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

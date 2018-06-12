@@ -8,11 +8,14 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.webd.dawid124.simpleratingservice.file.service.FileService;
+import pl.webd.dawid124.simpleratingservice.products.model.FetchData;
 import pl.webd.dawid124.simpleratingservice.products.model.Product;
+import pl.webd.dawid124.simpleratingservice.products.model.ProductListModel;
 import pl.webd.dawid124.simpleratingservice.products.service.ProductsService;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class ProductsController {
@@ -51,7 +54,7 @@ public class ProductsController {
     }
 
 
-    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "public/product/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getProduct(@PathVariable("id") long id) {
         Product product = productsService.getProduct(id);
 
@@ -61,5 +64,17 @@ public class ProductsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(value = "public/products", method = RequestMethod.POST)
+    public ResponseEntity<?> fetchProducts(@RequestBody FetchData fetchData) {
+        List<ProductListModel> products = productsService.fetchProducts(fetchData);
+
+        if (products != null) {
+            return new ResponseEntity<>(products, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }

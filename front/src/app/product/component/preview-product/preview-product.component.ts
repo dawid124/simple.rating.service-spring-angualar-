@@ -10,12 +10,16 @@ export class PreviewProductComponent implements OnInit {
 
   @Input('product') product: Product;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  calculateRating() {
+  calculateRating(): number {
+    const ratings: Array<number> = this.product.ratings.map((rating) => rating.rating);
+    const sum = ratings.reduce((a, b) => a + b, 0);
 
+    return Math.round((sum / ratings.length) * 100) / 100;
   }
 }

@@ -63,7 +63,7 @@
       {{'RATINGS.FORM_LABEL' | translate}}
     </div>
   </div>
-  <app-rating [productId]="product.id"></app-rating>
+  <app-rating [product]="product"></app-rating>
 </div>
 
 <div class="comments">
@@ -72,5 +72,5 @@
     {{'COMMENT.FORM_LABEL' | translate}}
     </div>
   </div>
-  <app-comments></app-comments>
+  <app-comments [product]="product"></app-comments>
 </div>

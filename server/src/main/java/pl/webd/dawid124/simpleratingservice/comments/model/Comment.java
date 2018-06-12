@@ -1,18 +1,19 @@
-package pl.webd.dawid124.simpleratingservice.ratings.model;
+package pl.webd.dawid124.simpleratingservice.comments.model;
+
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
-public class Rating {
+public class Comment {
 
     private long id;
     private String descriptions;
     private Date date;
-    private int rating;
-    private long userId;
     private String username;
+    private long userId;
     private long productId;
 
-    public Rating() {
+    public Comment() {
     }
 
     public long getId() {
@@ -39,14 +40,6 @@ public class Rating {
         this.date = date;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
     public long getUserId() {
         return userId;
     }
@@ -64,7 +57,7 @@ public class Rating {
     }
 
     public boolean valid() {
-        return userId > 0 && productId > 0 && rating > 0;
+        return userId > 0 && productId > 0 && StringUtils.hasText(descriptions);
     }
 
     public String getUsername() {

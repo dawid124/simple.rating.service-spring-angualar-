@@ -15,14 +15,18 @@ export const api = {
   },
   PRODUCT: {
     NEW_PRODUCT: '/product',
-    PRODUCT: '/product/',
+    PRODUCT: '/public/product/',
+    PRODUCTS: '/public/products/',
     NEW_TYPE: '/type',
     ALL_TYPES: '/types',
     IMAGE_CONTROLLER: '/image/',
   },
   RATING: {
-    ALL_RATING: '/ratingsNumber',
-    CREATE_RATING: '/rating/'
+    ALL_RATING: '/ratings',
+    CREATE_RATING: '/rating'
+  },
+  COMMENT: {
+    CREATE_COMMENT: '/comment'
   }
 };
 

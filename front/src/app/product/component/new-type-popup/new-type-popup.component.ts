@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormControl, Validators} from '@angular/forms';
-import {Type} from '../../../../models/type';
-import {ProductService} from '../../../service/product.service';
+import {Type} from '../../../models/type';
+import {ProductService} from '../../service/product.service';
 
 @Component({
   selector: 'app-new-type-popup',

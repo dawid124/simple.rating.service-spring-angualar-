@@ -1,0 +1,51 @@
+<div class="add-rating" *ngIf="isNotRatingByUser() && isLogged()">
+  <div class="comment">
+    <mat-form-field>
+      <input [(ngModel)]="newRating.descriptions"
+        placeholder="{{'RATINGS.ADD_DESCRIPTIONS' | translate}}" matInput>
+    </mat-form-field>
+  </div>
+  <div class="rating">
+    <span *ngFor="let index of getRatingsNumbers()"
+          [class.active]="index <= newRating.rating"
+          (click)="setRating(index)">
+
+      ☆
+    </span>
+  </div>
+  <div class="button">
+    <button mat-raised-button color="primary" (click)="addRating()">
+      {{'RATINGS.ADD_BUTTON' | translate}}
+    </button>
+  </div>
+
+
+</div>
+
+<div class="ratings">
+  <div *ngFor="let rating of product.ratings" class="rating-element">
+
+    <div class="info">
+      <div class="date">
+        {{rating.date | date: 'dd/MM/yyyy HH:mm'}}
+      </div>
+      <div class="username">
+        {{rating.username}}
+      </div>
+    </div>
+
+    <div class="text">
+      <div class="rating">
+        <span *ngFor="let index of getRatingsNumbers().reverse()"
+              [class.active]="index <= rating.rating">
+          ☆
+        </span>
+      </div>
+      <div class="descriptions">
+        {{rating.descriptions}}
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,10 +1,12 @@
 package pl.webd.dawid124.simpleratingservice.ratings.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import pl.webd.dawid124.simpleratingservice.ratings.model.Rating;
+
+import java.util.List;
 
 public interface RatingsService {
 
-    Rating createRating(Rating rating);
+    int createRating(Rating rating);
+
+    List<Rating> getRatingsByProductId(long productId);
 }

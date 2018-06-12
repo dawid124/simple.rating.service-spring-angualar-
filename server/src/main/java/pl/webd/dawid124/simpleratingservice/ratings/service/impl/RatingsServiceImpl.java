@@ -6,6 +6,8 @@ import pl.webd.dawid124.simpleratingservice.ratings.mapper.RatingsMapper;
 import pl.webd.dawid124.simpleratingservice.ratings.model.Rating;
 import pl.webd.dawid124.simpleratingservice.ratings.service.RatingsService;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class RatingsServiceImpl implements RatingsService {
@@ -17,9 +19,12 @@ public class RatingsServiceImpl implements RatingsService {
     }
 
     @Override
-    public Rating createRating(Rating rating) {
-        ratingsMapper.insertRating(rating);
+    public int createRating(Rating rating) {
+        return ratingsMapper.insertRating(rating);
+    }
 
-        return rating;
+    @Override
+    public List<Rating> getRatingsByProductId(long productId) {
+        return ratingsMapper.getRatingsByProductId(productId);
     }
 }

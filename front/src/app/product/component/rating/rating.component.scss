@@ -1,9 +1,41 @@
-@import "../../../../../assets/styles/variables";
+@import "../../../../assets/styles/variables";
 
 
 .ratings {
+  padding: 10px 30px 10px 20px;
   .rating-element {
+    width: 100%;
+    padding: 10px 0 0 0;
+    border-bottom: 1px dotted $transparent-black5;
+    .text {
+      display: flex;
+      flex-direction: row;
+      .rating {
+        span.active {
+          &:before {
+            content: "\2605";
+            color: $primaryColor;
+            position: absolute;
+          }
+        }
+      }
+      .descriptions{
+        padding-left: 10px;
+      }
+    }
 
+    .info {
+      display: flex;
+      flex-direction: row;
+      font-size: $small-font;
+      .date {
+
+      }
+      .username {
+        padding-left: 10px;
+        font-weight: 800;
+      }
+    }
   }
 }
 
@@ -13,8 +45,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 30px;
+  padding: 20px;
+  margin-top: 10px;
   box-sizing: border-box;
+  border: 1px dotted $transparent-black3;
   .comment {
     flex-basis: 100%;
     width: 100%;

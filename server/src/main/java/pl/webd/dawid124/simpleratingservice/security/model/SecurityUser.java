@@ -21,7 +21,7 @@ public class SecurityUser implements UserDetails {
     }
 
     public SecurityUser(UserModel userModel) {
-        this.userId = userModel.getUserId();
+        this.userId = userModel.getId();
         this.username = userModel.getUsername();
         this.email = userModel.getEmail();
         this.password = userModel.getPassword();

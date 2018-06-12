@@ -1,0 +1,35 @@
+@import "../../../assets/styles/variables";
+
+
+.products-list {
+  width: 100%;
+  max-width: $site-max-width;
+  .product-element {
+    width: 100%;
+    cursor: pointer;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px dotted $transparent-black5;
+    .image {
+      width: 100px;
+      height: 100px;
+    }
+
+    .details {
+      .ratings {
+
+      }
+      .description {
+
+      }
+      .name {
+
+      }
+    }
+
+    &:hover {
+      background: $transparent-black1;
+    }
+  }
+}

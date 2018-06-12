@@ -1,7 +1,9 @@
 package pl.webd.dawid124.simpleratingservice.products.model;
 
 import org.springframework.util.StringUtils;
+import pl.webd.dawid124.simpleratingservice.comments.model.Comment;
 import pl.webd.dawid124.simpleratingservice.file.model.Picture;
+import pl.webd.dawid124.simpleratingservice.ratings.model.Rating;
 import pl.webd.dawid124.simpleratingservice.type.model.Type;
 
 import java.util.List;
@@ -16,6 +18,8 @@ public class Product {
     private String color;
     private String producer;
     private List<Picture> pictures;
+    private List<Rating> ratings;
+    private List<Comment> comments;
 
 
     public Product() {
@@ -75,6 +79,22 @@ public class Product {
 
     public void setProducer(String producer) {
         this.producer = producer;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public boolean valid() {

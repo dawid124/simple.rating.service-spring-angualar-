@@ -12,8 +12,8 @@ export class RatingService {
   constructor(private httpClient: HttpClient) { }
 
 
-  createRating(rating: Rating, productId: number): Observable<Rating> {
-    return this.httpClient.post<Rating>(`${environment.SERVER_ADDRESS}${api.RATING.CREATE_RATING}${productId}`, rating);
+  createRating(rating: Rating): Observable<Rating> {
+    return this.httpClient.post<Rating>(`${environment.SERVER_ADDRESS}${api.RATING.CREATE_RATING}`, rating);
   }
 
   getAllRatings(): Observable<Array<Rating>> {

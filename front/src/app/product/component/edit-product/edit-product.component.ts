@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../../models/product';
 import {Type} from '../../../models/type';
 import {FormControl, Validators} from '@angular/forms';
-import {NewTypePopupComponent} from './new-type-popup/new-type-popup.component';
+import {NewTypePopupComponent} from '../new-type-popup/new-type-popup.component';
 import {MatDialog} from '@angular/material';
 import {ProductService} from '../../service/product.service';
 import {UiPicture} from '../../../models/ui-picture';

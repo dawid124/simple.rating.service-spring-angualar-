@@ -1,5 +1,7 @@
 import {Type} from './type';
 import {Picture} from './picture';
+import {Rating} from './rating';
+import {Comment} from './comment';
 
 export class Product {
   id: number;
@@ -10,6 +12,8 @@ export class Product {
   color: String;
   producer: string;
   pictures: Array<Picture>;
+  ratings: Array<Rating>;
+  comments: Array<Comment>;
 
 
   constructor() {
@@ -17,6 +21,8 @@ export class Product {
     this.name = '';
     this.descriptions = '';
     this.pictures = [];
+    this.ratings = [];
+    this.comments = [];
     this.price = null;
     this.type = null;
     this.color = '';
