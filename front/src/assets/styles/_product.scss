@@ -55,9 +55,13 @@
       }
     }
   }
+  .ratings {
+    clear: both;
+  }
 
   .buttons {
     float: right;
+    margin-bottom: 15px;
   }
 }
 

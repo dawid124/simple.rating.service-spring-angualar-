@@ -1,5 +1,5 @@
 <div class="product">
-  <app-gallery *ngIf="product?.pictures.length > 0" [pictures]="product?.pictures"></app-gallery>
+  <app-gallery [pictures]="product?.pictures"></app-gallery>
 
   <div class="details">
     <div class="preview-mode">
@@ -55,6 +55,13 @@
       </mat-form-field>
     </div>
   </div>
+</div>
+
+<div class="buttons">
+  <button mat-raised-button color="primary"
+          (click)="editProduct()">
+    {{'PRODUCT.FORM_LABEL_EDIT' | translate}}
+  </button>
 </div>
 
 <div class="ratings">

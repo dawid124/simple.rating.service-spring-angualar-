@@ -7,14 +7,22 @@
     <div class="menu-container">
       <a *ngIf="isAdmin()"
          [routerLink]="['/product']"
-         routerLinkActive="active"
-         (click)="goToNewProduct()">
+         routerLinkActive="active">
       {{'PRODUCT.HEADER_NEW_PRODUCT_LABEL' | translate}}
       </a>
-    </div>
-    <div class="find-container">
 
+      <a [routerLink]="['/products']"
+         routerLinkActive="active">
+        {{'PRODUCT.HEADER_PRODUCTS_LABEL' | translate}}
+      </a>
+
+      <a *ngIf="productId"
+         [routerLink]="['/product-details', productId]"
+         [class.active]="isActive(['/product-details', productId])">
+        {{productName}}
+      </a>
     </div>
+
     <div class="sign-container">
       <a *ngIf="!isLogged()"
          (click)="showSignPopup()">

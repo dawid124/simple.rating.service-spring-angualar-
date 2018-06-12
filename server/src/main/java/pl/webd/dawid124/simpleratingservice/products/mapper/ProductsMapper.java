@@ -3,6 +3,7 @@ package pl.webd.dawid124.simpleratingservice.products.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 import pl.webd.dawid124.simpleratingservice.products.model.FetchData;
 import pl.webd.dawid124.simpleratingservice.products.model.Product;
@@ -33,4 +34,8 @@ public interface ProductsMapper {
 
     @Select(FETCH_PRODUCTS_QUERY)
     List<ProductListModel> fetchProducts(FetchData fetchData);
+
+    @Update("update products set name = #{name}, descriptions = #{descriptions}, price = #{price}, " +
+            "color = #{color}, producer = #{producer}, type_fk = #{type.id} where id = #{id}")
+    int updateProduct(Product product);
 }

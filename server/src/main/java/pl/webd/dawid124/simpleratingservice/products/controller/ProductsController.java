@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pl.webd.dawid124.simpleratingservice.file.model.Picture;
 import pl.webd.dawid124.simpleratingservice.file.service.FileService;
 import pl.webd.dawid124.simpleratingservice.products.model.FetchData;
 import pl.webd.dawid124.simpleratingservice.products.model.Product;
@@ -40,6 +41,14 @@ public class ProductsController {
             return new ResponseEntity<>("NOT_VALID", HttpStatus.BAD_REQUEST);
         }
 
+        if (product.getId() > 0) {
+            return updateProductAndGetResponse(pictures, product);
+        } else {
+            return createProductAndGetResponse(pictures, product);
+        }
+    }
+
+    private ResponseEntity<?> createProductAndGetResponse(MultipartFile[] pictures, Product product) throws IOException {
         int updatedCount = productsService.createProduct(product);
 
         for (MultipartFile picture: pictures) {
@@ -53,6 +62,24 @@ public class ProductsController {
         }
     }
 
+
+    private ResponseEntity<?> updateProductAndGetResponse(MultipartFile[] pictures, Product product) throws IOException {
+        int updatedCount = productsService.updateProduct(product);
+
+        for (MultipartFile picture: pictures) {
+            fileService.createFile(picture.getBytes(), product.getId());
+        }
+
+        product.getPictures().stream()
+                .filter(Picture::isDeleted)
+                .forEach(picture -> fileService.removeFile(picture));
+
+        if (updatedCount > 0) {
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @RequestMapping(value = "public/product/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getProduct(@PathVariable("id") long id) {

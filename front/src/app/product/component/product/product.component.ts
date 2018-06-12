@@ -19,14 +19,14 @@ export class ProductComponent implements OnInit {
               private productService: ProductService) {
 
 
-    this.product = new Product();
     this.route.params.subscribe(params => {
       const productId: number = params.id;
+      this.editMode = params.edit ? true : false;
+
       if (productId) {
-        this.editMode = false;
         this.loadProductData(productId);
       } else {
-        this.editMode = true;
+        this.product = new Product();
       }
     });
   }

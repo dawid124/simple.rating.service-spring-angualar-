@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../../models/product';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-preview-product',
@@ -9,8 +10,9 @@ import {Product} from '../../../models/product';
 export class PreviewProductComponent implements OnInit {
 
   @Input('product') product: Product;
+  @Output() switchEditMode: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -24,5 +26,10 @@ export class PreviewProductComponent implements OnInit {
     const sum = ratings.reduce((a, b) => a + b, 0);
 
     return Math.round((sum / ratings.length) * 100) / 100;
+  }
+
+  editProduct() {
+    this.switchEditMode.emit(true);
+    this.router.navigate(['/product-details/', this.product.id, 'edit']);
   }
 }

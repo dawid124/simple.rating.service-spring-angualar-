@@ -6,12 +6,14 @@ import {TranslateModule} from '@ngx-translate/core';
 import {SignModule} from '../sign/sign.module';
 import {MatButtonModule} from '@angular/material';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
     SignModule,
+    RouterModule,
     MatButtonModule
   ],
   exports: [

@@ -6,6 +6,7 @@ public class Picture {
     private String label;
     private String src;
     private long productId;
+    private boolean deleted;
 
     public Picture() {
     }
@@ -45,5 +46,13 @@ public class Picture {
 
     public void setProductId(long productId) {
         this.productId = productId;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

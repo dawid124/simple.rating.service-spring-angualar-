@@ -7,15 +7,12 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {PopupComponent} from './global/popup/popup.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {AuthInterceptor} from './auth/auth.interceptor';
-import {HeaderComponent} from './global/header/header.component';
 import {ProductModule} from './product/product.module';
 import {AppRoutingModule} from './app-routing-module';
 import {AuthService} from './auth/auth.service';
 import {ProductListModule} from './product-list/product-list.module';
-import {NotFoundComponent} from './global/not-found/not-found.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 
@@ -26,10 +23,7 @@ export function configFactory(authService: AuthService) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PopupComponent,
-    HeaderComponent,
-    NotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

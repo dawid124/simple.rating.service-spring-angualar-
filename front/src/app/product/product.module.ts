@@ -10,6 +10,7 @@ import {NewTypePopupComponent} from './component/new-type-popup/new-type-popup.c
 import {GalleryComponent} from './component/gallery/gallery.component';
 import {RatingComponent} from './component/rating/rating.component';
 import {CommentsComponent} from './component/comments/comments.component';
+import {GlobalModule} from '../global/global.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {CommentsComponent} from './component/comments/comments.component';
     MatSelectModule,
     MatFormFieldModule,
     MatButtonModule,
+    GlobalModule,
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
@@ -26,8 +28,18 @@ import {CommentsComponent} from './component/comments/comments.component';
     MatDialogModule,
     TranslateModule
   ],
-  declarations: [ProductComponent, EditProductComponent, PreviewProductComponent, NewTypePopupComponent, GalleryComponent, RatingComponent, CommentsComponent],
-  entryComponents: [NewTypePopupComponent]
+  declarations: [
+    ProductComponent,
+    EditProductComponent,
+    PreviewProductComponent,
+    NewTypePopupComponent,
+    GalleryComponent,
+    RatingComponent,
+    CommentsComponent
+  ],
+  entryComponents: [
+    NewTypePopupComponent
+  ]
 })
 export class ProductModule {
 }

@@ -39,17 +39,26 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
+    public int updateProduct(Product product) {
+        return productsMapper.updateProduct(product);
+    }
+
+    @Override
     public Product getProduct(long id) {
         Product product = productsMapper.getProduct(id);
         if (product == null) {
             return null;
         }
-        
-        product.setType(typeMapper.getTypeByProductId(id));
-        product.setPictures(fileMapper.getPicturesByProductId(id));
-        product.setRatings(ratingsMapper.getRatingsByProductId(id));
-        product.setComments(commentsMapper.getCommentsByProductId(id));
+
+        populateProductRlationData(product);
         return product;
+    }
+
+    private void populateProductRlationData(Product product) {
+        product.setType(typeMapper.getTypeByProductId(product.getId()));
+        product.setPictures(fileMapper.getPicturesByProductId(product.getId()));
+        product.setRatings(ratingsMapper.getRatingsByProductId(product.getId()));
+        product.setComments(commentsMapper.getCommentsByProductId(product.getId()));
     }
 
     @Override

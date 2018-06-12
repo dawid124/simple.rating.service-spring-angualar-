@@ -1,11 +1,15 @@
+<app-header [productId]="product?.id" [productName]="product?.name"></app-header>
+
 <div class="product-container">
 
- <app-edit-product [product]="product"
-                   *ngIf="editMode">
- </app-edit-product>
+  <app-edit-product [product]="product"
+                    (switchEditMode)="switchEditMode($event)"
+                    *ngIf="editMode && product">
+  </app-edit-product>
 
   <app-preview-product [product]="product"
-                       *ngIf="!editMode">
+                       (switchEditMode)="switchEditMode($event)"
+                       *ngIf="!editMode && product">
   </app-preview-product>
 
 </div>

@@ -25,6 +25,9 @@ export class ProductListComponent implements OnInit {
   }
 
   getImageUrl(src: string) {
+    if (!src) {
+      return '';
+    }
     return `${environment.SERVER_ADDRESS}${api.PRODUCT.IMAGE_CONTROLLER}${src}`;
   }
 
@@ -51,7 +54,7 @@ export class ProductListComponent implements OnInit {
   }
 
   goToDetails(product: ProductListModel) {
-    this.router.navigate([`/product/${product.id}`]);
+    this.router.navigate([`/product-details/${product.id}`]);
   }
 
   onScroll() {

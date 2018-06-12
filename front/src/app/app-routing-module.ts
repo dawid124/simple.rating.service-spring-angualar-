@@ -8,9 +8,10 @@ const APP_ROUTES: Route[] = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
   {path: 'product', component: ProductComponent},
   {path: 'products', component: ProductListComponent},
-  {path: 'product/:id', component: ProductComponent},
-  { path: '404', component: NotFoundComponent },
-  { path: '**', component: NotFoundComponent }
+  {path: 'product-details/:id', component: ProductComponent},
+  {path: 'product-details/:id/:edit', component: ProductComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
@@ -21,4 +22,5 @@ const APP_ROUTES: Route[] = [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

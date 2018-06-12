@@ -10,6 +10,8 @@ public interface ProductsService {
 
     int createProduct(Product product);
 
+    int updateProduct(Product product);
+
     Product getProduct(long id);
 
     List<ProductListModel> fetchProducts(FetchData fetchData);

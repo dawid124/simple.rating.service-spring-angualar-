@@ -25,6 +25,9 @@ export class GalleryComponent implements OnInit {
   }
 
   getImageUrl(src: string) {
+    if (!src) {
+      return '';
+    }
     return `${environment.SERVER_ADDRESS}${api.PRODUCT.IMAGE_CONTROLLER}${src}`;
   }
 

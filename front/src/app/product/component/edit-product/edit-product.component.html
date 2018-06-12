@@ -1,14 +1,16 @@
 <div class="product">
   <div class="image">
     <div class="edit-mode">
-      <div class="picture" *ngFor="let picture of pictures; let i = index">
-        <img [src]="picture.data" > <br/>
-        <input type='file' #imageUpload name="imageUpload" (change)="onSelectFile($event, i)" class="hide">
-        <button mat-raised-button color="primary" class="add-picture"
-                for="imageUpload"
-                (click)="imageUpload.click()">
-          {{'PRODUCT.FORM_LABEL_ADD_SELECT_PICTURE' | translate}}
-        </button>
+      <div *ngFor="let picture of product.pictures; let i = index">
+        <div class="picture" *ngIf="!picture.deleted">
+          <img [src]="getImageUrl(picture.src)"> <br/>
+          <input type='file' #imageUpload name="imageUpload" (change)="onSelectFile($event, i)" class="hide">
+          <button mat-raised-button color="primary" class="add-picture"
+                  for="imageUpload"
+                  (click)="imageUpload.click()">
+            {{'PRODUCT.FORM_LABEL_ADD_SELECT_PICTURE' | translate}}
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -71,7 +73,9 @@
 </div>
 
 <div class="buttons">
-  <button mat-raised-button color="primary" (click)="createProduct()">
+  <button mat-raised-button color="primary"
+          [disabled]="!isFormValid()"
+          (click)="createProduct()">
     {{'PRODUCT.FORM_LABEL_SAVE' | translate}}
   </button>
 </div>
