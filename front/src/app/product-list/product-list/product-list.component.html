@@ -1,21 +1,39 @@
-<div class="products-list">
-  <div *ngFor="let product of products"
-       (click)="goToDetails(product)"
-       class="product-element">
-    <div class="image">
-      <img [src]="getImageUrl(product.picture)"/>
-    </div>
-    <div class="details">
-      <div class="name">
-        {{product.name}}
+<div class="products">
+  <div class="products-list">
+    <div *ngFor="let product of products"
+         (click)="goToDetails(product)"
+         class="product-element">
+      <div class="image">
+        <img [src]="getImageUrl(product.picture)"/>
       </div>
-      <div class="description">
-        {{product.descriptions}}
-      </div>
-      <div class="ratings">
-        {{'PRODUCT.FORM_LABEL_RATING' | translate}}: {{product.rating}}
-      </div>
-    </div>
+      <div class="details">
+        <div class="name">
+          {{product.name}}
+        </div>
+        <div class="description">
+          <div class="collapse-text">
 
+              {{product.descriptions}}
+
+
+          </div>
+        </div>
+        <div class="ratings">
+          {{product.rating}}
+        </div>
+        <div class="price">
+          {{product.price}}
+        </div>
+      </div>
+
+    </div>
   </div>
+</div>
+
+<div class="search-results"
+     *ngIf="!allLoaded"
+     infiniteScroll
+     infiniteScrollDistance="2"
+     infiniteScrollThrottle="50"
+     (scrolled)="onScroll()">
 </div>

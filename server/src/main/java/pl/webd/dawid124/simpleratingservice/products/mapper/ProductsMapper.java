@@ -14,10 +14,10 @@ import java.util.List;
 public interface ProductsMapper {
 
     String FETCH_PRODUCTS_QUERY =
-            "select p.id, p.name, p.descriptions, avg(r.rating) as rating, min(pic.src) " +
+            "select p.id, p.name, p.descriptions, p.price, avg(r.rating) as rating, min(pic.src) as picture " +
             "from products p " +
-            "join pictures pic on pic.product_fk = p.id " +
-            "join ratings r on r.product_fk = p.id " +
+            "left join pictures pic on pic.product_fk = p.id " +
+            "left join ratings r on r.product_fk = p.id " +
             "group by p.id " +
             "order by p.id asc " +
             "LIMIT #{limit} " +

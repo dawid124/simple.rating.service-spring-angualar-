@@ -17,6 +17,9 @@ export class PreviewProductComponent implements OnInit {
   }
 
   calculateRating(): number {
+    if (this.product.ratings.length === 0) {
+      return 0;
+    }
     const ratings: Array<number> = this.product.ratings.map((rating) => rating.rating);
     const sum = ratings.reduce((a, b) => a + b, 0);
 

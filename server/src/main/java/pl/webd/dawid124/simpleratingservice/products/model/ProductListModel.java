@@ -7,6 +7,7 @@ public class ProductListModel {
     private String descriptions;
     private double rating;
     private String picture;
+    private double price;
 
     public ProductListModel() {
     }
@@ -49,5 +50,13 @@ public class ProductListModel {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

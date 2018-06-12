@@ -5,6 +5,7 @@ export const environment = {
   SERVER_ADDRESS: 'http://localhost:8080',
   JWT_TOKEN: 'jwt_token',
   ACCESS_TOKEN_PARAM: 'Authorization',
+  INFINITY_SCROLL_LIMIT: 30
 };
 
 export const api = {

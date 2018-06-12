@@ -4,4 +4,5 @@ export class ProductListModel {
   descriptions: string;
   rating: number;
   picture: string;
+  price: number;
 }

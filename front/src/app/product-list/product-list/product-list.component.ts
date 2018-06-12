@@ -13,12 +13,14 @@ import {Router} from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   products: Array<ProductListModel>;
+  allLoaded: boolean;
 
   constructor(private productService: ProductService,
               private router: Router) {
   }
 
   ngOnInit() {
+    this.products = [];
     this.fetchProducts();
   }
 
@@ -28,18 +30,31 @@ export class ProductListComponent implements OnInit {
 
   fetchProducts() {
     const fetchData: FetchData = {
-      limit: 10,
-      offset: 0
+      limit: environment.INFINITY_SCROLL_LIMIT,
+      offset: this.products.length
     };
 
     this.productService.fetchProducts(fetchData)
-      .subscribe((products: Array<ProductListModel>) => {
-          this.products = products;
+      .subscribe((products: ProductListModel[]) => {
+          // products = products.concat(products);
+          // products = products.concat(products);
+          // products = products.concat(products);
+          // products.splice(0, 2);
+
+          this.products = this.products.concat(products);
+
+          if (products.length < environment.INFINITY_SCROLL_LIMIT) {
+            this.allLoaded = true;
+          }
         }
       );
   }
 
   goToDetails(product: ProductListModel) {
     this.router.navigate([`/product/${product.id}`]);
+  }
+
+  onScroll() {
+    this.fetchProducts();
   }
 }

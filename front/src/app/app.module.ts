@@ -15,6 +15,8 @@ import {ProductModule} from './product/product.module';
 import {AppRoutingModule} from './app-routing-module';
 import {AuthService} from './auth/auth.service';
 import {ProductListModule} from './product-list/product-list.module';
+import {NotFoundComponent} from './global/not-found/not-found.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 
 export function configFactory(authService: AuthService) {
@@ -26,7 +28,8 @@ export function configFactory(authService: AuthService) {
   declarations: [
     AppComponent,
     PopupComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ export function configFactory(authService: AuthService) {
     NgxSpinnerModule,
     HttpClientModule,
     ProductModule,
+    InfiniteScrollModule,
     ProductListModule,
     AppRoutingModule,
     TranslateModule.forRoot({
