@@ -1,5 +1,13 @@
 <app-header></app-header>
 
+<div class="search">
+  <mat-form-field>
+    <input matInput
+           [(ngModel)]="searchText"
+           (input)="search()"
+           placeholder="{{'PRODUCT.FORM_LABEL_SEARCH' | translate}}">
+  </mat-form-field>
+</div>
 <div class="products">
   <div class="products-list">
     <div *ngFor="let product of products"

@@ -6,7 +6,7 @@
   <div class="header-container">
     <div class="menu-container">
       <a *ngIf="isAdmin()"
-         [routerLink]="['/product']"
+         [routerLink]="['/product/new']"
          routerLinkActive="active">
       {{'PRODUCT.HEADER_NEW_PRODUCT_LABEL' | translate}}
       </a>

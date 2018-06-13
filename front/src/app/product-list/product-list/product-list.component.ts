@@ -14,13 +14,16 @@ export class ProductListComponent implements OnInit {
 
   products: Array<ProductListModel>;
   allLoaded: boolean;
+  searchText: string;
+  searchDelay;
 
   constructor(private productService: ProductService,
               private router: Router) {
+    this.products = [];
+    this.searchText = '';
   }
 
   ngOnInit() {
-    this.products = [];
     this.fetchProducts();
   }
 
@@ -34,16 +37,12 @@ export class ProductListComponent implements OnInit {
   fetchProducts() {
     const fetchData: FetchData = {
       limit: environment.INFINITY_SCROLL_LIMIT,
-      offset: this.products.length
+      offset: this.products.length,
+      searchText: this.searchText
     };
 
     this.productService.fetchProducts(fetchData)
       .subscribe((products: ProductListModel[]) => {
-          // products = products.concat(products);
-          // products = products.concat(products);
-          // products = products.concat(products);
-          // products.splice(0, 2);
-
           this.products = this.products.concat(products);
 
           if (products.length < environment.INFINITY_SCROLL_LIMIT) {
@@ -51,6 +50,14 @@ export class ProductListComponent implements OnInit {
           }
         }
       );
+  }
+
+  search() {
+    clearTimeout(this.searchDelay);
+    this.searchDelay = setTimeout(() => {
+      this.products = [];
+      this.fetchProducts();
+    }, 500);
   }
 
   goToDetails(product: ProductListModel) {

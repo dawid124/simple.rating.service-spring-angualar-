@@ -15,7 +15,9 @@
            [(ngModel)]="type.descriptions">
   </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="addNewProductType()">
+  <button mat-raised-button color="primary"
+          [disabled]="!type.name"
+          (click)="addNewProductType()">
     {{'PRODUCT.FORM_LABEL_SAVE' | translate}}
   </button>
 </div>

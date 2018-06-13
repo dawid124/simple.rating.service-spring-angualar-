@@ -6,7 +6,7 @@ import {NotFoundComponent} from './global/not-found/not-found.component';
 
 const APP_ROUTES: Route[] = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
-  {path: 'product', component: ProductComponent},
+  {path: 'product/:edit', component: ProductComponent},
   {path: 'products', component: ProductListComponent},
   {path: 'product-details/:id', component: ProductComponent},
   {path: 'product-details/:id/:edit', component: ProductComponent},

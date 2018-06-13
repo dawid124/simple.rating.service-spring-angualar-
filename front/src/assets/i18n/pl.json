@@ -15,6 +15,7 @@
     "HEADER_NEW_PRODUCT_LABEL": "Nowy produkt",
     "HEADER_PRODUCTS_LABEL": "Produkty",
     "FORM_LABEL_NAME": "Nazwa",
+    "FORM_LABEL_SEARCH": "Wyszukaj produkt",
     "FORM_LABEL_DESCRIPTIONS": "Opis",
     "FORM_LABEL_PRICE": "Cena",
     "FORM_LABEL_TYPE": "Typ",
