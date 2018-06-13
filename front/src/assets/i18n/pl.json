@@ -41,5 +41,10 @@
     "REQUIRED": "To pole jest wymagane",
     "EMAIL": "Email jest nie poprawny",
     "THE_SAME_PASSWORD": "Hasła muszą byc takie same"
+  },
+  "ERRORS": {
+    "ALREADY_EXISTS": "Użytkownik o podanych danych już wistnieje",
+    "FORM_NOT_VALID": "Formularz zaweira błędy",
+    "SERVER_ERROR_MESSAGE": "Błąd servera"
   }
 }

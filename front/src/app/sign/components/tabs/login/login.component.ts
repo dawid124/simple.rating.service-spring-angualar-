@@ -6,6 +6,8 @@ import {finalize} from 'rxjs/operators';
 import {Login} from '../../../../models/login';
 import {AuthService} from '../../../../auth/auth.service';
 import {UserData} from '../../../../models/user-data';
+import {ErrorModelComponent} from '../../../../global/error-model/error-model.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +22,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private signService: SignService,
+              private dialog: MatDialog,
               private authService: AuthService,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService) {
+  }
 
   ngOnInit() {
     this.loginForm = this.buildLoginForm();
@@ -50,8 +54,6 @@ export class LoginComponent implements OnInit {
 
   handleError(error: any) {
     const errorsArray = {
-      409: 'SING_UP.MESSAGES.ALREADY_EXISTS',
-      403: 'SING_UP.MESSAGES.EMPTY_DEVICE_ID',
       400: 'SING_UP.MESSAGES.FORM_NOT_VALID',
     };
 
@@ -60,7 +62,12 @@ export class LoginComponent implements OnInit {
     if (!messageKey) {
       messageKey = 'SERVER_ERROR_MESSAGE';
     }
-    // this.popUps.createToastWithBlackBackground(this.toastCtrl, messageKey);
+
+    this.dialog.open(ErrorModelComponent, {
+      data: {
+        errorCode: messageKey
+      }
+    });
   }
 
   buildLoginForm() {

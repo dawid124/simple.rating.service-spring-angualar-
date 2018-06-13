@@ -7,6 +7,7 @@ import {SignModule} from '../sign/sign.module';
 import {MatButtonModule} from '@angular/material';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {RouterModule} from '@angular/router';
+import { ErrorModelComponent } from './error-model/error-model.component';
 
 @NgModule({
   imports: [
@@ -18,8 +19,9 @@ import {RouterModule} from '@angular/router';
   ],
   exports: [
     PopupComponent,
-    HeaderComponent
+    HeaderComponent,
+    ErrorModelComponent
   ],
-  declarations: [PopupComponent, HeaderComponent, NotFoundComponent]
+  declarations: [PopupComponent, HeaderComponent, NotFoundComponent, ErrorModelComponent]
 })
 export class GlobalModule { }

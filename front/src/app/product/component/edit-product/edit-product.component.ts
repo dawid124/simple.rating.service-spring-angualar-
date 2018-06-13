@@ -31,7 +31,6 @@ export class EditProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    ``;
     this.addNewPicture();
     this.getAllType();
   }

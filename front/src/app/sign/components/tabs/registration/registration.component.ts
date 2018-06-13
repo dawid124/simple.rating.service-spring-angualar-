@@ -6,6 +6,7 @@ import {Registration} from '../../../../models/registration';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {SignService} from '../../../service/sign.service';
 import {MatDialog} from '@angular/material';
+import {ErrorModelComponent} from '../../../../global/error-model/error-model.component';
 
 @Component({
   selector: 'app-registration',
@@ -62,20 +63,19 @@ export class RegistrationComponent implements OnInit {
 
   handleError(error: any) {
     const errorsArray = {
-      409: 'SING_UP.MESSAGES.ALREADY_EXISTS',
-      403: 'SING_UP.MESSAGES.EMPTY_DEVICE_ID',
-      400: 'SING_UP.MESSAGES.FORM_NOT_VALID',
+      409: 'ERRORS.ALREADY_EXISTS',
+      400: 'ERRORS.FORM_NOT_VALID',
     };
 
     let messageKey = errorsArray[error.status];
 
     if (!messageKey) {
-      messageKey = 'SERVER_ERROR_MESSAGE';
+      messageKey = 'ERRORS.SERVER_ERROR_MESSAGE';
     }
 
-    this.dialog.open(RegistrationComponent, {
+    this.dialog.open(ErrorModelComponent, {
       data: {
-        animal: 'panda'
+        errorCode: messageKey
       }
     });
   }

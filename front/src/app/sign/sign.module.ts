@@ -7,6 +7,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import {ErrorModelComponent} from '../global/error-model/error-model.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,6 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     LoginComponent
   ],
   declarations: [RegistrationComponent, LoginComponent, SignComponent],
-  entryComponents: [RegistrationComponent]
+  entryComponents: [RegistrationComponent, ErrorModelComponent]
 })
 export class SignModule { }
