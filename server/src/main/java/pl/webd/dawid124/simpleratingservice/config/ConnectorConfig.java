@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import pl.webd.dawid124.simpleratingservice.interceptors.PerformanceLogAspect;
 
 import javax.sql.DataSource;
 

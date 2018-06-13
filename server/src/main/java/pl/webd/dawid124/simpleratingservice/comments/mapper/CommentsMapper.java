@@ -17,4 +17,7 @@ public interface CommentsMapper {
 
     @Select("select c.*, u.id as userId, u.username from comments c join users u on u.id = c.user_fk WHERE product_fk=#{productId}")
     List<Comment> getCommentsByProductId(long id);
+
+    @Select("select distinct u.email from comments c join users u on u.id = c.user_fk WHERE product_fk=#{productId}")
+    List<String> getCommentingUsers(long productId);
 }

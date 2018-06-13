@@ -4,9 +4,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.webd.dawid124.simpleratingservice.comments.model.Comment;
 
+import java.util.List;
+
 @Service
 @Transactional
 public interface CommentsService {
 
-    int createComment(Comment comment);
+    Comment createComment(Comment comment);
+
+    List<String> getCommentingUsers(long productId);
 }

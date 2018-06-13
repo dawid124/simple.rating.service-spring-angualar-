@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface RatingsService {
 
-    int createRating(Rating rating);
+    Rating createRating(Rating rating);
 
     List<Rating> getRatingsByProductId(long productId);
+
+    List<String> getRatingUsers(long productId);
 }

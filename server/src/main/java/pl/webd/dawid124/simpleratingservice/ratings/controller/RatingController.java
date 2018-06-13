@@ -28,9 +28,9 @@ public class RatingController {
             return new ResponseEntity<>("NOT_VALID", HttpStatus.BAD_REQUEST);
         }
 
-        int updatedCount = ratingsService.createRating(rating);
+        ratingsService.createRating(rating);
 
-        if (updatedCount > 0) {
+        if (rating.getId() > 0) {
             return new ResponseEntity<>(rating, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

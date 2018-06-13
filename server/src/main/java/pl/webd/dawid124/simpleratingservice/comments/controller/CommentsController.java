@@ -28,9 +28,9 @@ public class CommentsController {
             return new ResponseEntity<>("NOT_VALID", HttpStatus.BAD_REQUEST);
         }
 
-        int updatedCount = commentsService.createComment(comment);
+       commentsService.createComment(comment);
 
-        if (updatedCount > 0) {
+        if (comment.getId() > 0) {
             return new ResponseEntity<>(comment, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

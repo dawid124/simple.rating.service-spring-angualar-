@@ -5,6 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.webd.dawid124.simpleratingservice.comments.mapper.CommentsMapper;
 import pl.webd.dawid124.simpleratingservice.comments.model.Comment;
 import pl.webd.dawid124.simpleratingservice.comments.service.CommentsService;
+import pl.webd.dawid124.simpleratingservice.interceptors.SendNotifications;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -17,7 +20,15 @@ public class CommentsServiceImpl implements CommentsService {
     }
 
     @Override
-    public int createComment(Comment comment) {
-        return commentsMapper.insertComment(comment);
+    @SendNotifications
+    public Comment createComment(Comment comment) {
+        commentsMapper.insertComment(comment);
+
+        return comment;
+    }
+
+    @Override
+    public List<String> getCommentingUsers(long productId) {
+        return commentsMapper.getCommentingUsers(productId);
     }
 }

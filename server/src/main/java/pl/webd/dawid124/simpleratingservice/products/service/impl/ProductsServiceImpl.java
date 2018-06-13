@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.webd.dawid124.simpleratingservice.comments.mapper.CommentsMapper;
 import pl.webd.dawid124.simpleratingservice.file.mapper.FileMapper;
+import pl.webd.dawid124.simpleratingservice.interceptors.SendNotifications;
 import pl.webd.dawid124.simpleratingservice.products.mapper.ProductsMapper;
 import pl.webd.dawid124.simpleratingservice.products.model.FetchData;
 import pl.webd.dawid124.simpleratingservice.products.model.Product;

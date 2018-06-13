@@ -4,7 +4,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
-public class Comment {
+public class Comment implements ProductRelation {
 
     private long id;
     private String descriptions;
@@ -48,10 +48,12 @@ public class Comment {
         this.userId = userId;
     }
 
+    @Override
     public long getProductId() {
         return productId;
     }
 
+    @Override
     public void setProductId(long productId) {
         this.productId = productId;
     }

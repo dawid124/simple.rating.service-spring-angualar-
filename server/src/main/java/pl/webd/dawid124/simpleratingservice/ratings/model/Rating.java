@@ -1,8 +1,10 @@
 package pl.webd.dawid124.simpleratingservice.ratings.model;
 
+import pl.webd.dawid124.simpleratingservice.comments.model.ProductRelation;
+
 import java.util.Date;
 
-public class Rating {
+public class Rating implements ProductRelation {
 
     private long id;
     private String descriptions;
@@ -55,10 +57,12 @@ public class Rating {
         this.userId = userId;
     }
 
+    @Override
     public long getProductId() {
         return productId;
     }
 
+    @Override
     public void setProductId(long productId) {
         this.productId = productId;
     }

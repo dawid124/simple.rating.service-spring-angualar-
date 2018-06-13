@@ -17,4 +17,7 @@ public interface RatingsMapper {
 
     @Select("select r.*, u.id as userId, u.username from ratings r join users u on u.id = r.user_fk WHERE product_fk=#{productId}")
     List<Rating> getRatingsByProductId(long productId);
+
+    @Select("select distinct u.email from ratings r join users u on u.id = r.user_fk WHERE product_fk=#{productId}")
+    List<String> getRatingUsers(long productId);
 }
