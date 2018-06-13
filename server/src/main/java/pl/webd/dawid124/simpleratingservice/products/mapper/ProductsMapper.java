@@ -19,6 +19,7 @@ public interface ProductsMapper {
             "from products p " +
             "left join pictures pic on pic.product_fk = p.id " +
             "left join ratings r on r.product_fk = p.id " +
+            "where p.name like #{searchText} " +
             "group by p.id " +
             "order by p.id asc " +
             "LIMIT #{limit} " +

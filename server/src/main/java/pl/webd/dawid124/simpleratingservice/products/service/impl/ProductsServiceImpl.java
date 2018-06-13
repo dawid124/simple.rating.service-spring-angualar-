@@ -64,6 +64,7 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public List<ProductListModel> fetchProducts(FetchData fetchData) {
+        fetchData.setSearchText("%" + fetchData.getSearchText() + "%");
         return productsMapper.fetchProducts(fetchData);
     }
 

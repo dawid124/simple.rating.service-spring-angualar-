@@ -4,6 +4,7 @@ public class FetchData {
 
     private int limit;
     private int offset;
+    private String searchText;
 
     public FetchData() {
     }
@@ -22,5 +23,13 @@ public class FetchData {
 
     public void setOffset(int offset) {
         this.offset = offset;
+    }
+
+    public String getSearchText() {
+        return searchText;
+    }
+
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
     }
 }
