@@ -39,11 +39,11 @@
   },
   "VALIDATION": {
     "REQUIRED": "To pole jest wymagane",
-    "EMAIL": "Email jest nie poprawny",
+    "EMAIL": "Email jest niepoprawny",
     "THE_SAME_PASSWORD": "Hasła muszą byc takie same"
   },
   "ERRORS": {
-    "ALREADY_EXISTS": "Użytkownik o podanych danych już wistnieje",
+    "ALREADY_EXISTS": "Użytkownik o podanych danych już istnieje",
     "FORM_NOT_VALID": "Formularz zaweira błędy",
     "SERVER_ERROR_MESSAGE": "Błąd servera"
   }

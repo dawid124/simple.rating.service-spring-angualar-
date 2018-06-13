@@ -1,3 +1,50 @@
 {
-  "APP_NAME": "Rating portal"
+  "APP_NAME": "Rating portal",
+  "SIGN": {
+    "LOGIN_LABEL": "Log in",
+    "REGISTRATION_LABEL": "Registration",
+    "FORM_LABEL_LOGIN": "Username",
+    "FORM_LABEL_EMAIL": "E-mail",
+    "FORM_LABEL_PASSWORD": "Password",
+    "FORM_LABEL_SIGN_IN": "Log in",
+    "FORM_LABEL_LOGOUT": "Log out",
+    "FORM_LABEL_SIGN_UP": "Register",
+    "CLOSE_POPUP": "Close"
+  },
+  "PRODUCT": {
+    "HEADER_NEW_PRODUCT_LABEL": "New product",
+    "HEADER_PRODUCTS_LABEL": "Products",
+    "FORM_LABEL_NAME": "Name",
+    "FORM_LABEL_DESCRIPTIONS": "Descriptions",
+    "FORM_LABEL_PRICE": "Price",
+    "FORM_LABEL_TYPE": "Type",
+    "FORM_LABEL_COLOR": "Color",
+    "FORM_LABEL_PRODUCER": "Producer",
+    "FORM_LABEL_RATING": "Rating",
+    "FORM_LABEL_SAVE": "Save",
+    "FORM_LABEL_EDIT": "Edit",
+    "FORM_LABEL_ADD_PICTURE": "Add",
+    "FORM_LABEL_ADD_SELECT_PICTURE": "Select picture",
+    "FORM_LABEL_ADD_NEW": "Add new"
+  },
+  "COMMENT": {
+    "FORM_LABEL": "Comments",
+    "ADD_BUTTON": "Add",
+    "ADD_DESCRIPTIONS": "Add comment"
+  },
+  "RATINGS": {
+    "FORM_LABEL": "Ratings",
+    "ADD_BUTTON": "Add",
+    "ADD_DESCRIPTIONS": "Add rating"
+  },
+  "VALIDATION": {
+    "REQUIRED": "This field is required",
+    "EMAIL": "Email is incorrect",
+    "THE_SAME_PASSWORD": "Passwords must be the same"
+  },
+  "ERRORS": {
+    "ALREADY_EXISTS": "The user with the given data already exists",
+    "FORM_NOT_VALID": "The form contains errors",
+    "SERVER_ERROR_MESSAGE": "Server error"
+  }
 }
