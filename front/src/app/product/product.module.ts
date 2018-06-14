@@ -6,10 +6,10 @@ import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EditProductComponent} from './component/product-edit/edit-product.component';
 import {PreviewProductComponent} from './component/product-preview/preview-product.component';
-import {NewTypePopupComponent} from './component/new-type-popup/new-type-popup.component';
-import {GalleryComponent} from './component/gallery/gallery.component';
-import {RatingComponent} from './component/rating/rating.component';
-import {CommentsComponent} from './component/comments/comments.component';
+import {NewTypePopupComponent} from './component/include/new-type-popup/new-type-popup.component';
+import {GalleryComponent} from './component/include/gallery/gallery.component';
+import {RatingComponent} from './component/include/rating/rating.component';
+import {CommentsComponent} from './component/include/comments/comments.component';
 import {GlobalModule} from '../global/global.module';
 
 @NgModule({

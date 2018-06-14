@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Picture} from '../../../models/picture';
-import {api, environment} from '../../../../environments/environment';
+import {Picture} from '../../../../models/picture';
+import {api, environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-gallery',
