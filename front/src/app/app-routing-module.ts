@@ -1,7 +1,7 @@
-import {ProductComponent} from './product/component/product.component';
+import {ProductComponent} from './product/component/product/product.component';
 import {Route, RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
-import {ProductListComponent} from './product-list/product-list/product-list.component';
+import {ProductListComponent} from './product-list/components/product-list/product-list.component';
 import {NotFoundComponent} from './global/not-found/not-found.component';
 
 const APP_ROUTES: Route[] = [

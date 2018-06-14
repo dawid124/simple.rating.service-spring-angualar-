@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductService} from '../../product/service/product.service';
-import {FetchData} from '../../models/fetch-data';
-import {ProductListModel} from '../../models/product-list-model';
-import {api, environment} from '../../../environments/environment';
+import {ProductService} from '../../../product/service/product.service';
+import {FetchData} from '../../../models/fetch-data';
+import {ProductListModel} from '../../../models/product-list-model';
+import {api, environment} from '../../../../environments/environment';
 import {Router} from '@angular/router';
 
 @Component({

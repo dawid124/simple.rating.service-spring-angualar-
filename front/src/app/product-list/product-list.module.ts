@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ProductListComponent} from './product-list/product-list.component';
+import {ProductListComponent} from './components/product-list/product-list.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {GlobalModule} from '../global/global.module';
